@@ -1,0 +1,19 @@
+body {
+    max-width: 900px;
+    margin: 2em auto 0;
+    font: normal 14px monospace;
+}
+
+.logo {
+    height: 15px;
+    position: relative;
+    top: 2px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+ul {
+    margin: 40px 10px;
+}
