@@ -1,9 +1,11 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Assistant, sans-serif;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   line-height: 1.6;
+  background-color: black;
+  color: white;
 }
 
 .logo {
@@ -13,8 +15,15 @@ body {
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
+
+.pi {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 25px; /* Adjust size for effect */
+  text-transform: uppercase;
+}
+
 
 ul {
     padding-left: 20px;
