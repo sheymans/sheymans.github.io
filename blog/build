@@ -1,0 +1,89 @@
+#!/bin/bash
+# build: Scans for *.md files, creates posts.json, and generates rss.xml.
+
+echo "Generating posts.json with titles..."
+printf "[
+" > posts.json
+first=true
+
+# Find all .md files, sort them reverse-chronologically
+for file in $(ls -r *.md 2>/dev/null); do
+    date=$(basename "$file" .md)
+    title=$(grep -m 1 '^# ' "$file" | sed 's/^# //' | sed 's/"/\"/g' | tr -d '\n\r' || true)
+    if [ -z "$title" ]; then
+        title=$date
+    fi
+
+    if [ "$first" = false ]; then
+        printf ",\n" >> posts.json
+    fi
+
+    printf "  {\n" >> posts.json
+    printf "    \"filename\": \"%s\",\n" "$file" >> posts.json
+    printf "    \"date\": \"%s\",\n" "$date" >> posts.json
+    printf "    \"title\": \"%s\"\n" "$title" >> posts.json
+    printf "  }" >> posts.json
+    first=false
+done
+
+printf "\n]\n" >> posts.json
+echo "Done. Processed $(ls -r *.md 2>/dev/null | wc -l) posts for posts.json."
+
+# --- RSS Feed Generation ---
+echo ""
+echo "Generating rss.xml..."
+
+BASE_URL="https://stijnheymans.net/blog"
+
+# Function to escape XML special characters
+xml_escape() {
+    sed 's/&/\&amp;/g' | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed 's/"/\&quot;/g' | sed "s/'/\&#39;/g"
+}
+
+# Start of RSS file
+cat > rss.xml <<EOF
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>stijn&apos;s blog</title>
+  <link>${BASE_URL}</link>
+  <description>Blog by Stijn Heymans</description>
+  <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
+EOF
+
+# Loop through files to generate RSS items
+for file in $(ls -r *.md 2>/dev/null); do
+    date_str=$(basename "$file" .md)
+    
+    raw_title=$(grep -m 1 '^# ' "$file" | sed 's/^# //' | tr -d '\n\r' || true)
+    if [ -z "$raw_title" ]; then
+        raw_title=$date_str
+    fi
+    escaped_title=$(echo "$raw_title" | xml_escape)
+    
+    link="${BASE_URL}/#${file}"
+
+    # Format pubDate for RSS (for macOS/darwin) - corrected "+%%a"
+    pubDate=$(date -u -j -f "%Y-%m-%d" "$date_str" "+%a, %d %b %Y 00:00:00 GMT")
+
+    # Extract description: first non-empty line after the title line.
+    description=$(sed -n '2,/^$/{/./p;}' "$file" | head -n 1)
+
+    cat >> rss.xml <<EOF
+  <item>
+    <title>${escaped_title}</title>
+    <link>${link}</link>
+    <guid isPermaLink="true">${link}</guid>
+    <pubDate>${pubDate}</pubDate>
+    <description><![CDATA[${description}]]></description>
+  </item>
+EOF
+done
+
+# End of RSS file
+cat >> rss.xml <<EOF
+</channel>
+</rss>
+EOF
+
+echo "Done. rss.xml has been generated."

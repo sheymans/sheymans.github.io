@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Get today's date in YYYY-MM-DD format
+DATE=$(date +%Y-%m-%d)
+
+# Construct the filename
+FILENAME="${DATE}.md"
+
+# Check if the file exists, if not, create it with a header
+if [ ! -f "$FILENAME" ]; then
+    echo "# ${DATE}" > "$FILENAME"
+fi
+
+# Open the file
+nvim "$FILENAME"
