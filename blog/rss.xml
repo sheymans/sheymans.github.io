@@ -6,6 +6,13 @@
   <description>Blog by Stijn Heymans</description>
   <atom:link href="https://stijnheymans.net/blog/rss.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title>Read less, but read it twice</title>
+    <link>https://stijnheymans.net/blog/#2026-02-23.md</link>
+    <guid isPermaLink="true">https://stijnheymans.net/blog/#2026-02-23.md</guid>
+    <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[I came across this Rolf Dobelli's article: [Weniger lesen, aber aus Prinzip]]></description>
+  </item>
+  <item>
     <title>The Act of Making</title>
     <link>https://stijnheymans.net/blog/#2026-02-02.md</link>
     <guid isPermaLink="true">https://stijnheymans.net/blog/#2026-02-02.md</guid>
