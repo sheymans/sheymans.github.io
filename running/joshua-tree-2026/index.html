@@ -16,9 +16,9 @@ h1 span{color:#f97316;font-weight:700}
 .sub{font-size:.78rem;color:#888;margin-bottom:2.2rem}
 
 .grid{display:flex;flex-direction:column;margin-bottom:2rem}
-.head,.row{display:grid;grid-template-columns:32px 70px 64px 1fr 1.4fr 1fr 42px;gap:.6rem;padding:.55rem .2rem;align-items:start;border-bottom:1px solid #1a1a1a}
+.head,.row{display:grid;grid-template-columns:32px 70px 64px 1fr 1.4fr 1fr 42px 46px;gap:.6rem;padding:.55rem .2rem;align-items:start;border-bottom:1px solid #1a1a1a}
 .head{color:#777;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #2a2a2a}
-.head .km-h{text-align:right}
+.head .km-h,.head .pc-h{text-align:right}
 .row{font-size:.76rem}
 .row.mark{border-top:1px solid #2a2a2a;padding-top:.7rem}
 .wk{color:#fff;font-weight:500}
@@ -32,7 +32,14 @@ h1 span{color:#f97316;font-weight:700}
 .r.span{grid-column:4 / span 3;color:#666;font-style:italic}
 .done{display:block;margin-top:.35rem;font-size:.62rem;line-height:1.5;color:#f97316;font-weight:500;letter-spacing:.01em}
 .done .t{display:block;color:#777;font-weight:400}
+.skip{display:block;margin-top:.35rem;font-size:.62rem;line-height:1.5;color:#b05c4a;font-weight:500;letter-spacing:.01em}
+.skip .t{display:block;color:#777;font-weight:400}
 .km{color:#fff;text-align:right;font-weight:500;font-size:.76rem}
+.km.act{color:#f97316}
+.pc{color:#888;text-align:right;font-weight:500;font-size:.72rem}
+.pc.ok{color:#5cb85c}
+.pc.up{color:#e5604d}
+.pc.na{color:#444}
 
 .legend{font-size:.74rem;color:#888;line-height:1.9;border-top:1px solid #1a1a1a;padding-top:1.2rem}
 .legend strong{color:#fff;font-weight:500}
@@ -42,12 +49,12 @@ h1 span{color:#f97316;font-weight:700}
   body{padding:1.5rem .9rem 4rem}
   .head{display:none}
   .row{
-    grid-template-columns:36px 1fr auto auto;
+    grid-template-columns:36px 1fr auto auto auto;
     grid-template-areas:
-      "wk dt ph km"
-      "r1 r1 r1 r1"
-      "r2 r2 r2 r2"
-      "r3 r3 r3 r3";
+      "wk dt ph km pc"
+      "r1 r1 r1 r1 r1"
+      "r2 r2 r2 r2 r2"
+      "r3 r3 r3 r3 r3";
     row-gap:.25rem;
     column-gap:.6rem;
     padding:.85rem .1rem;
@@ -56,6 +63,7 @@ h1 span{color:#f97316;font-weight:700}
   .row .dt{grid-area:dt}
   .row .ph{grid-area:ph;text-align:right}
   .row .km{grid-area:km;text-align:right;min-width:42px}
+  .row .pc{grid-area:pc;text-align:right;min-width:42px}
   .row .r1{grid-area:r1}
   .row .r2{grid-area:r2}
   .row .r3{grid-area:r3}
@@ -76,33 +84,33 @@ h1 span{color:#f97316;font-weight:700}
     <div class="head">
       <div>Wk</div><div>Date</div><div>Phase</div>
       <div>Run 1</div><div>Run 2</div><div>Run 3</div>
-      <div class="km-h">Km</div>
+      <div class="km-h">Km</div><div class="pc-h">&Delta;%</div>
     </div>
 
-    <div class="row mark"><div class="wk">1</div><div class="dt">May 25</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.08k<span class="t">50:33 ↑140m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.06k<span class="t">50:52 ↑83m</span></span></div><div class="r r3">Long 6k</div><div class="km">16</div></div>
-    <div class="row"><div class="wk">2</div><div class="dt">Jun 1</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 7k</div><div class="km">17</div></div>
-    <div class="row"><div class="wk">3</div><div class="dt">Jun 8</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 8k</div><div class="km">18</div></div>
-    <div class="row"><div class="wk">4</div><div class="dt">Jun 15</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 9k</div><div class="km">19</div></div>
-    <div class="row"><div class="wk">5</div><div class="dt">Jun 22</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 10k</div><div class="km">21</div></div>
-    <div class="row"><div class="wk">6</div><div class="dt">Jun 29</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 11k</div><div class="km">22</div></div>
-    <div class="row"><div class="wk">7</div><div class="dt">Jul 6</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 12k</div><div class="km">24</div></div>
-    <div class="row"><div class="wk">8</div><div class="dt">Jul 13</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 13k</div><div class="km">25</div></div>
-    <div class="row mark"><div class="wk">9</div><div class="dt">Jul 20</div><div class="ph">Rest</div><div class="r r1 dim">—</div><div class="r r2 dim">—</div><div class="r r3">Long 11k</div><div class="km">11</div></div>
-    <div class="row mark"><div class="wk">10</div><div class="dt">Jul 27</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 13k</div><div class="km">25</div></div>
-    <div class="row"><div class="wk">11</div><div class="dt">Aug 3</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 14k</div><div class="km">26</div></div>
-    <div class="row"><div class="wk">12</div><div class="dt">Aug 10</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 7k</div><div class="r r3">Long 15k</div><div class="km">28</div></div>
-    <div class="row mark"><div class="wk">13</div><div class="dt">Aug 17</div><div class="ph">Rest</div><div class="r span">vacation · optional easy 30–40 min</div><div class="km">6</div></div>
-    <div class="row mark"><div class="wk">14</div><div class="dt">Aug 24</div><div class="ph">Build</div><div class="r r1">Easy 6k</div><div class="r r2 q">3×1k threshold (7k)</div><div class="r r3">Long 15k</div><div class="km">28</div></div>
-    <div class="row"><div class="wk">15</div><div class="dt">Aug 31</div><div class="ph">Build</div><div class="r r1">Easy 6k</div><div class="r r2 q">4×1k threshold (8k)</div><div class="r r3">Long 16k</div><div class="km">30</div></div>
-    <div class="row"><div class="wk">16</div><div class="dt">Sep 7</div><div class="ph">Build</div><div class="r r1">Easy 7k</div><div class="r r2 q">2×2k threshold (8k)</div><div class="r r3">Long 17k</div><div class="km">32</div></div>
-    <div class="row"><div class="wk">17</div><div class="dt">Sep 14</div><div class="ph">Build</div><div class="r r1">Easy 7k</div><div class="r r2 q">3×2k threshold (10k)</div><div class="r r3">Long 18k</div><div class="km">35</div></div>
-    <div class="row"><div class="wk">18</div><div class="dt">Sep 21</div><div class="ph">Build</div><div class="r r1">Easy 7k</div><div class="r r2 q">4×2k threshold (12k)</div><div class="r r3">Long 18k</div><div class="km">37</div></div>
-    <div class="row"><div class="wk">19</div><div class="dt">Sep 28</div><div class="ph">Build</div><div class="r r1">Easy 8k</div><div class="r r2 q">3×2k @ race pace (10k)</div><div class="r r3">Long 18k</div><div class="km">36</div></div>
-    <div class="row"><div class="wk">20</div><div class="dt">Oct 5</div><div class="ph">Build</div><div class="r r1">Easy 8k</div><div class="r r2 q">8k @ race pace (12k)</div><div class="r r3">Long 18k</div><div class="km">38</div></div>
-    <div class="row mark"><div class="wk">21</div><div class="dt">Oct 12</div><div class="ph">Taper</div><div class="r r1">Easy 7k</div><div class="r r2 q">5k @ race pace (9k)</div><div class="r r3">Long 14k</div><div class="km">30</div></div>
-    <div class="row"><div class="wk">22</div><div class="dt">Oct 19</div><div class="ph">Taper</div><div class="r r1">Easy 7k</div><div class="r r2 q">3×1k @ race pace (6k)</div><div class="r r3">Long 11k</div><div class="km">24</div></div>
-    <div class="row"><div class="wk">23</div><div class="dt">Oct 26</div><div class="ph">Taper</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 8k</div><div class="km">18</div></div>
-    <div class="row mark"><div class="wk">24</div><div class="dt">Nov 3</div><div class="ph race">Race</div><div class="r r1">Easy 3k</div><div class="r r2">Easy 2k</div><div class="r r3 race">Race 21.1k · Nov 7</div><div class="km">26</div></div>
+    <div class="row mark"><div class="wk">1</div><div class="dt">May 25</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.08k<span class="t">50:33 ↑140m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.06k<span class="t">50:52 ↑83m</span></span></div><div class="r r3">Long 6k<span class="skip">✕ skipped<span class="t">knee</span></span></div><div class="km act">10</div><div class="pc na">—</div></div>
+    <div class="row"><div class="wk">2</div><div class="dt">Jun 1</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.04k<span class="t">54:10 ↑80m</span></span></div><div class="r r2">Easy 5k</div><div class="r r3">Long 6k</div><div class="km">16</div><div class="pc ok">0%</div></div>
+    <div class="row"><div class="wk">3</div><div class="dt">Jun 8</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 7k</div><div class="km">17</div><div class="pc ok">+6%</div></div>
+    <div class="row"><div class="wk">4</div><div class="dt">Jun 15</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 8k</div><div class="km">18</div><div class="pc ok">+6%</div></div>
+    <div class="row"><div class="wk">5</div><div class="dt">Jun 22</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 9k</div><div class="km">19</div><div class="pc ok">+6%</div></div>
+    <div class="row"><div class="wk">6</div><div class="dt">Jun 29</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 10k</div><div class="km">20</div><div class="pc ok">+5%</div></div>
+    <div class="row"><div class="wk">7</div><div class="dt">Jul 6</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 11k</div><div class="km">22</div><div class="pc ok">+10%</div></div>
+    <div class="row"><div class="wk">8</div><div class="dt">Jul 13</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 12k</div><div class="km">24</div><div class="pc ok">+9%</div></div>
+    <div class="row mark"><div class="wk">9</div><div class="dt">Jul 20</div><div class="ph">Rest</div><div class="r r1 dim">—</div><div class="r r2 dim">—</div><div class="r r3">Long 10k</div><div class="km">10</div><div class="pc ok">−58%</div></div>
+    <div class="row mark"><div class="wk">10</div><div class="dt">Jul 27</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 13k</div><div class="km">25</div><div class="pc up">+150%</div></div>
+    <div class="row"><div class="wk">11</div><div class="dt">Aug 3</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 14k</div><div class="km">26</div><div class="pc ok">+4%</div></div>
+    <div class="row"><div class="wk">12</div><div class="dt">Aug 10</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 7k</div><div class="r r3">Long 15k</div><div class="km">28</div><div class="pc ok">+8%</div></div>
+    <div class="row mark"><div class="wk">13</div><div class="dt">Aug 17</div><div class="ph">Rest</div><div class="r span">vacation · optional easy 30–40 min</div><div class="km">6</div><div class="pc ok">−79%</div></div>
+    <div class="row mark"><div class="wk">14</div><div class="dt">Aug 24</div><div class="ph">Build</div><div class="r r1">Easy 6k</div><div class="r r2 q">3×1k threshold (7k)</div><div class="r r3">Long 15k</div><div class="km">28</div><div class="pc up">+367%</div></div>
+    <div class="row"><div class="wk">15</div><div class="dt">Aug 31</div><div class="ph">Build</div><div class="r r1">Easy 6k</div><div class="r r2 q">4×1k threshold (8k)</div><div class="r r3">Long 16k</div><div class="km">30</div><div class="pc ok">+7%</div></div>
+    <div class="row"><div class="wk">16</div><div class="dt">Sep 7</div><div class="ph">Build</div><div class="r r1">Easy 7k</div><div class="r r2 q">2×2k threshold (8k)</div><div class="r r3">Long 17k</div><div class="km">32</div><div class="pc ok">+7%</div></div>
+    <div class="row"><div class="wk">17</div><div class="dt">Sep 14</div><div class="ph">Build</div><div class="r r1">Easy 7k</div><div class="r r2 q">3×2k threshold (10k)</div><div class="r r3">Long 18k</div><div class="km">35</div><div class="pc ok">+9%</div></div>
+    <div class="row"><div class="wk">18</div><div class="dt">Sep 21</div><div class="ph">Build</div><div class="r r1">Easy 7k</div><div class="r r2 q">4×2k threshold (12k)</div><div class="r r3">Long 18k</div><div class="km">37</div><div class="pc ok">+6%</div></div>
+    <div class="row"><div class="wk">19</div><div class="dt">Sep 28</div><div class="ph">Build</div><div class="r r1">Easy 8k</div><div class="r r2 q">3×2k @ race pace (10k)</div><div class="r r3">Long 18k</div><div class="km">36</div><div class="pc ok">−3%</div></div>
+    <div class="row"><div class="wk">20</div><div class="dt">Oct 5</div><div class="ph">Build</div><div class="r r1">Easy 8k</div><div class="r r2 q">8k @ race pace (12k)</div><div class="r r3">Long 16k</div><div class="km">36</div><div class="pc ok">0%</div></div>
+    <div class="row mark"><div class="wk">21</div><div class="dt">Oct 12</div><div class="ph">Taper</div><div class="r r1">Easy 7k</div><div class="r r2 q">5k @ race pace (9k)</div><div class="r r3">Long 14k</div><div class="km">30</div><div class="pc ok">−17%</div></div>
+    <div class="row"><div class="wk">22</div><div class="dt">Oct 19</div><div class="ph">Taper</div><div class="r r1">Easy 7k</div><div class="r r2 q">3×1k @ race pace (6k)</div><div class="r r3">Long 11k</div><div class="km">24</div><div class="pc ok">−20%</div></div>
+    <div class="row"><div class="wk">23</div><div class="dt">Oct 26</div><div class="ph">Taper</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 8k</div><div class="km">18</div><div class="pc ok">−25%</div></div>
+    <div class="row mark"><div class="wk">24</div><div class="dt">Nov 3</div><div class="ph race">Race</div><div class="r r1">Easy 3k</div><div class="r r2">Easy 2k</div><div class="r r3 race">Race 21.1k · Nov 7</div><div class="km">26</div><div class="pc up">+44%</div></div>
   </div>
 
   <div class="legend">
@@ -110,6 +118,8 @@ h1 span{color:#f97316;font-weight:700}
     <span class="qq">Quality</span> — Zone 4, comfortably hard. Add 2k warm-up and 2k cool-down to the listed work.<br>
     <strong>Long</strong> — same easy pace as the easy runs. Resist pushing it.<br>
     <strong>Rest weeks (Jul 20, Aug 17)</strong> — natural rest by circumstance. Don't squeeze runs in.<br>
+    <strong>Km</strong> — planned weekly volume; turns <span style="color:#f97316">orange</span> once a week is done to show what was actually run.<br>
+    <strong>&Delta;%</strong> — week-over-week change in planned volume. <span style="color:#5cb85c">Green</span> ≤10%, <span style="color:#e5604d">red</span> &gt;10%. The red weeks (Jul 27, Aug 24, race week) are the planned step-ups after a rest/vacation week — expected, not a mistake.<br>
     <strong>Race day</strong> — start conservative. First 5k will feel easy; don't race it.
   </div>
 </div>
