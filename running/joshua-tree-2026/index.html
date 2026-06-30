@@ -46,6 +46,40 @@ h1 span{color:#f97316;font-weight:700}
 .legend strong{color:#fff;font-weight:500}
 .legend .qq{color:#f97316;font-weight:500}
 
+/* ── Right-foot protocol ── */
+.foot{margin-top:3.5rem;border-top:1px solid #2a2a2a;padding-top:2.2rem}
+.foot h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.2rem,4vw,1.8rem);font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:.4rem}
+.foot h2 span{color:#f97316;font-weight:700}
+.foot .sub{margin-bottom:1.8rem}
+.proto{display:flex;flex-direction:column;margin-bottom:1.6rem}
+.proto .wk-head,.proto .wk-row{display:grid;grid-template-columns:26px 54px 52px 1fr 1fr .85fr;gap:.55rem;padding:.6rem .2rem;align-items:start;border-bottom:1px solid #1a1a1a}
+.proto .wk-head{color:#777;font-size:.55rem;letter-spacing:.13em;text-transform:uppercase;border-bottom:1px solid #2a2a2a}
+.proto .wk-row{font-size:.71rem}
+.proto .wk-row.mark{border-top:1px solid #2a2a2a;padding-top:.75rem}
+.proto .wn{color:#fff;font-weight:500}
+.proto .wd{color:#888;font-size:.67rem}
+.proto .wph{color:#bbb;font-size:.6rem;letter-spacing:.03em}
+.proto .wph.rest{color:#777;font-style:italic}
+.proto .d{color:#d4d4d4;font-size:.69rem;line-height:1.45}
+.proto .d .i{display:block;margin-bottom:.18rem}
+.proto .d b{color:#f97316;font-weight:500}
+.proto .d.lite{color:#7f7f7f}
+.proto .d.lite b{color:#a8763a}
+.proto .dlabel{display:none}
+.tempo{font-size:.7rem;color:#888;line-height:1.7;margin-bottom:2rem;padding:.9rem 1.1rem;border:1px solid #1a1a1a;border-radius:6px;background:#0e0e0e}
+.tempo b{color:#f97316;font-weight:500}
+.tempo code{color:#fff;font-family:inherit}
+.gloss{font-size:.76rem;color:#bbb;line-height:1.7;border-top:1px solid #1a1a1a;padding-top:1.4rem}
+.gloss h3{color:#fff;font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:-.01em;margin:0 0 1rem}
+.gloss .ex{margin-bottom:1.3rem;padding-left:.9rem;border-left:2px solid #2a2a2a}
+.gloss .ex .nm{display:block;color:#f97316;font-weight:500;font-size:.8rem;margin-bottom:.3rem;letter-spacing:.01em}
+.gloss .ex .tgt{color:#777;font-size:.66rem;text-transform:uppercase;letter-spacing:.1em}
+.gloss .ex p{margin:.35rem 0 0}
+.gloss .ex b{color:#fff;font-weight:500}
+.painrule{margin-top:1.6rem;padding:1rem 1.1rem;border:1px solid #2a2a2a;border-radius:6px;background:#0e0e0e;font-size:.74rem;color:#bbb;line-height:1.7}
+.painrule strong{color:#f97316;font-weight:500}
+.disclaimer{margin-top:1.2rem;font-size:.64rem;color:#555;line-height:1.6;font-style:italic}
+
 @media (max-width:640px){
   body{padding:1.5rem .9rem 4rem}
   .head{display:none}
@@ -73,6 +107,26 @@ h1 span{color:#f97316;font-weight:700}
   .row .r{padding-left:.6rem;border-left:1px solid #1a1a1a}
   .row .r.dim{color:#333}
   .row .note{grid-column:1/-1;padding-left:.6rem;border-left:1px solid #1a1a1a;color:#888;font-size:.62rem;margin-top:.2rem}
+  .proto .wk-head{display:none}
+  .proto .wk-row{
+    grid-template-columns:30px 1fr;
+    grid-template-areas:
+      "wk ph"
+      "dt dt"
+      "mo mo"
+      "we we"
+      "fr fr";
+    row-gap:.3rem;column-gap:.55rem;padding:.95rem .1rem;
+  }
+  .proto .wk-row .wn{grid-area:wk}
+  .proto .wk-row .wph{grid-area:ph;text-align:right}
+  .proto .wk-row .wd{grid-area:dt}
+  .proto .wk-row .dmon{grid-area:mo}
+  .proto .wk-row .dwed{grid-area:we}
+  .proto .wk-row .dfri{grid-area:fr}
+  .proto .wk-row .d{padding-left:.6rem;border-left:1px solid #1a1a1a}
+  .proto .dlabel{display:inline;color:#f97316;font-weight:500;letter-spacing:.06em;margin-right:.35rem}
+  .proto .d.lite .dlabel{color:#a8763a}
 }
 </style>
 </head>
@@ -93,8 +147,8 @@ h1 span{color:#f97316;font-weight:700}
     <div class="row"><div class="wk">2</div><div class="dt">Jun 1</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.04k<span class="t">54:10 ↑80m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.06k<span class="t">52:32 ↑77m</span></span></div><div class="r r3">Long 6k<span class="done">✓ 6.10k<span class="t">59:42 ↑101m</span></span></div><div class="km act">16.2</div><div class="pc up">+59.8%</div></div>
     <div class="row"><div class="wk">3</div><div class="dt">Jun 8</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.09k<span class="t">49:04 ↑83m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.07k<span class="t">51:57 ↑85m</span></span></div><div class="r r3">Long 7k<span class="done">✓ 7.05k<span class="t">1:12:30 ↑135m</span></span></div><div class="km act">17.2</div><div class="pc ok">+6.2%</div><div class="note">Wed, ~2h after the run the left knee was a bit painful again. Thu it was stiff but not painful. Fri run mostly pain-free with 2–3 small pangs in the left knee; whole weekend after was pain-free.</div></div>
     <div class="row"><div class="wk">4</div><div class="dt">Jun 15</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.09k<span class="t">50:11 ↑89m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.07k<span class="t">50:36 ↑79m</span></span></div><div class="r r3">Long 8k<span class="done">✓ 8.17k<span class="t">1:20:47 ↑222m</span></span></div><div class="km act">18.3</div><div class="pc ok">+6.5%</div><div class="note">Mon run on heavy legs with a bit of pain under the right ankle (very mild). Fri run had slight tightness in the right hamstring, but it didn't last the whole run.</div></div>
-    <div class="row"><div class="wk">5</div><div class="dt">Jun 22</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.07k<span class="t">49:49 ↑80m</span></span></div><div class="r r2">Easy 5k</div><div class="r r3">Long 9k</div><div class="km">19</div><div class="pc ok">+6%</div><div class="note">Mon run: slight threat of achilles pain but it did not materialize.</div></div>
-    <div class="row"><div class="wk">6</div><div class="dt">Jun 29</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 10k</div><div class="km">20</div><div class="pc ok">+5%</div></div>
+    <div class="row"><div class="wk">5</div><div class="dt">Jun 22</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.07k<span class="t">49:49 ↑80m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.06k<span class="t">51:43 ↑58m</span></span></div><div class="r r3">Long 9k<span class="done">✓ 9.05k<span class="t">1:30:12 ↑175m</span></span></div><div class="km act">19.2</div><div class="pc ok">+4.8%</div><div class="note">Mon run: slight threat of achilles pain but it did not materialize.</div></div>
+    <div class="row"><div class="wk">6</div><div class="dt">Jun 29</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.05k<span class="t">51:41 ↑85m</span></span></div><div class="r r2">Easy 5k</div><div class="r r3">Long 10k</div><div class="km">20</div><div class="pc ok">+5%</div></div>
     <div class="row"><div class="wk">7</div><div class="dt">Jul 6</div><div class="ph">Base</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 11k</div><div class="km">22</div><div class="pc ok">+10%</div></div>
     <div class="row"><div class="wk">8</div><div class="dt">Jul 13</div><div class="ph">Base</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 12k</div><div class="km">24</div><div class="pc ok">+9%</div></div>
     <div class="row mark"><div class="wk">9</div><div class="dt">Jul 20</div><div class="ph">Rest</div><div class="r r1 dim">—</div><div class="r r2 dim">—</div><div class="r r3">Long 10k</div><div class="km">10</div><div class="pc ok">−58%</div></div>
@@ -124,6 +178,195 @@ h1 span{color:#f97316;font-weight:700}
     <strong>&Delta;%</strong> — week-over-week change in volume: actual-vs-actual for completed weeks, planned-vs-planned ahead. <span style="color:#5cb85c">Green</span> ≤10%, <span style="color:#e5604d">red</span> &gt;10%. The red weeks (Jul 27, Aug 24, race week) are the planned step-ups after a rest/vacation week — expected, not a mistake.<br>
     <strong>Note</strong> — context for the week (injury, travel, how a run felt).<br>
     <strong>Race day</strong> — start conservative. First 5k will feel easy; don't race it.
+  </div>
+
+  <div class="foot">
+    <h2>BULLETPROOF THE <span>RIGHT FOOT</span></h2>
+    <div class="sub">Mid-portion Achilles · posterior tibialis · plantar fascia &middot; matched week-for-week to the run plan &middot; strength on Mon &amp; Wed (after easy runs), light holds on Fri (after the long run)</div>
+
+    <div class="tempo">
+      <b>How to read it.</b> <code>3×10</code> = 3 sets of 10 reps. <code>each</code> = one leg at a time (per foot). Tempo like <code>3-2-3</code> = seconds <b>up · hold at top · down</b> — moving that slowly <i>is</i> the exercise. Default tempos: <b>A</b> 3-2-3, <b>B</b> 3-1-3, <b>C</b> 2-1-3. <code>load</code> = backpack or dumbbells. <code>ISO</code> = isometric hold (see below). Rest 60–90s between sets. The whole point of this layout: heavy eccentric work only on your two <b>easy</b>-run days; <b>Friday</b> after the long run is light holds only — never stack heavy calf work on long-run legs.
+    </div>
+
+    <div class="proto">
+      <div class="wk-head">
+        <div>Wk</div><div>Date</div><div>Phase</div>
+        <div>Mon · after easy run</div><div>Wed · after easy run</div><div>Fri · after long run</div>
+      </div>
+
+      <div class="wk-row mark">
+        <div class="wn">6</div><div class="wd">Jun 29</div><div class="wph">Calm</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>ISO</b> 4×30s</span><span class="i"><b>A</b> 3×10 both legs · <b>partial range</b> (heel to platform, not below yet)</span><span class="i"><b>B</b> 2×12 light</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×30s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">7</div><div class="wd">Jul 6</div><div class="wph">Calm</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>ISO</b> 5×30s</span><span class="i"><b>A</b> 3×12 both legs · <b>full range</b> (heel drops below platform)</span><span class="i"><b>B</b> 3×12 light–moderate</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×30s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">8</div><div class="wd">Jul 13</div><div class="wph">Calm</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>ISO</b> 5×40s</span><span class="i"><b>A</b> 3×15 both legs · full range</span><span class="i"><b>B</b> 3×15 moderate</span><span class="i"><b>C</b> 2×12 each <i>(new)</i></span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
+      </div>
+
+      <div class="wk-row mark">
+        <div class="wn">9</div><div class="wd">Jul 20</div><div class="wph rest">Build · rest wk</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×8 each · single-leg <b>eccentric only</b> (push up on both, lift one foot, lower on one in 3s)</span><span class="i"><b>B</b> 3×12 each moderate</span><span class="i"><b>C</b> 3×12 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×30s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">10</div><div class="wd">Jul 27</div><div class="wph">Build</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×8 each · single-leg <b>full</b> (up and down on one), bodyweight</span><span class="i"><b>B</b> 3×12 each</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">11</div><div class="wd">Aug 3</div><div class="wph">Build</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×10 each · single-leg, bodyweight</span><span class="i"><b>B</b> 3×12 each heavier</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">12</div><div class="wd">Aug 10</div><div class="wph">Build</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×8 each · single-leg <b>+ ~5 kg</b> (first added load)</span><span class="i"><b>B</b> 3×10 each heavier</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
+      </div>
+
+      <div class="wk-row mark">
+        <div class="wn">13</div><div class="wd">Aug 17</div><div class="wph rest">Build · vacation</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><i>Travel — hold, don't progress. Just need a step.</i></span><span class="i"><b>A</b> 3×10 each single-leg, bodyweight</span><span class="i"><b>B</b> 3×15 each bodyweight (skip if no weights)</span><span class="i"><b>C</b> towel version 3×15</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×30s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">14</div><div class="wd">Aug 24</div><div class="wph">Build</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×8 each · single-leg <b>+ ~6–8 kg</b></span><span class="i"><b>B</b> 3×10 each heavy</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">15</div><div class="wd">Aug 31</div><div class="wph">Build</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each · single-leg <b>+ ~8–10 kg</b> (heavy — last 1–2 reps hard)</span><span class="i"><b>B</b> 3×10 each heavy</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
+      </div>
+
+      <div class="wk-row mark">
+        <div class="wn">16</div><div class="wd">Sep 7</div><div class="wph">Spring</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×15 double-leg (low, quiet, fast) <i>(new)</i></span><span class="i"><b>A</b> 2×10 each bodyweight</span><span class="i"><b>ISO</b> 2×30s</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">17</div><div class="wd">Sep 14</div><div class="wph">Spring</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×20 double-leg</span><span class="i"><b>A</b> 2×10 each bodyweight</span><span class="i"><b>ISO</b> 2×30s</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">18</div><div class="wd">Sep 21</div><div class="wph">Spring</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×20 double-leg + 2×8 each <b>single-leg</b> mini-hops <i>(new)</i></span><span class="i"><b>ISO</b> 2×30s</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">19</div><div class="wd">Sep 28</div><div class="wph">Spring</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×10 each single-leg</span><span class="i"><b>ISO</b> 2×30s</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">20</div><div class="wd">Oct 5</div><div class="wph">Spring</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×12 each single-leg</span><span class="i"><b>ISO</b> 2×30s</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">21</div><div class="wd">Oct 12</div><div class="wph">Spring</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×12 each single-leg</span><span class="i"><b>ISO</b> 2×30s</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
+      </div>
+
+      <div class="wk-row mark">
+        <div class="wn">22</div><div class="wd">Oct 19</div><div class="wph">Taper</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 2×6 each + load (drop to 2 sets, same weight)</span><span class="i"><b>B</b> 2×8 each</span><span class="i"><b>C</b> 2×15 each</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 2×15 double-leg (easy)</span><span class="i"><b>ISO</b> 2×30s</span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 3×30s only</span></div>
+      </div>
+
+      <div class="wk-row">
+        <div class="wn">23</div><div class="wd">Oct 26</div><div class="wph">Taper</div>
+        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 2×8 each bodyweight (no added load)</span><span class="i"><b>B</b> 2×8 light</span><span class="i"><b>ISO</b> 3×30s</span></div>
+        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>A</b> 2×8 each bodyweight</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><i>no pogos this week</i></span></div>
+        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 2×30s only</span></div>
+      </div>
+
+      <div class="wk-row mark">
+        <div class="wn">24</div><div class="wd">Nov 3</div><div class="wph rest">Race · Nov 7</div>
+        <div class="d dmon"><span class="dlabel">MON Nov 3</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><b>A</b> 2×10 each bodyweight (light, just priming)</span></div>
+        <div class="d dwed"><span class="dlabel">WED Nov 5</span><span class="i"><b>ISO</b> 2×30s only</span></div>
+        <div class="d lite dfri"><span class="dlabel">THU–SAT</span><span class="i">Rest the feet — nothing. <b>Race Sun Nov 7.</b></span></div>
+      </div>
+    </div>
+
+    <div class="gloss">
+      <h3>The exercises — exactly how</h3>
+
+      <div class="ex">
+        <span class="nm">ISO · Isometric calf hold</span>
+        <span class="tgt">Pain relief + tendon stiffness</span>
+        <p>Same setup as A (ToePro, toes elevated). Rise to about <b>halfway up</b> and <b>hold dead still</b> at that height for the full count — no bouncing, no lowering. Both legs early on; one leg once it's easy. Push hard enough that it's a real effort but pain stays <b>≤3/10</b>. <b>4–5 × 30–45s</b>, rest ~60s. These calm an irritable tendon and keep it primed without fatigue — that's why they're the only thing on long-run Fridays and in race week.</p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">A · Standing single-leg heel raise, toes elevated</span>
+        <span class="tgt">Achilles (mid) + plantar fascia</span>
+        <p>On the ToePro with the balls of your feet on the ramp so your <b>toes sit higher than your heels</b> (this pre-tensions the plantar fascia). Hold a wall/rail for balance only. Rise straight up onto the ball of the foot (<b>3s up</b>), pause at the top (<b>2s</b>), then lower slowly (<b>3s down</b>) until the heel drops <b>below</b> the platform into a gentle stretch — full range is fine for your mid-portion Achilles. Cue: <b>rise straight up over the big toe, don't let the ankle roll outward</b> (this protects the posterior tibialis). Progress: both legs → single leg → add a loaded backpack/dumbbell.</p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">B · Seated heel raise</span>
+        <span class="tgt">Soleus — the downhill protector</span>
+        <p>What you already do. Sit, balls of feet on the ToePro/step edge, weight(s) resting on top of your knees, knees bent ~90°. Push up onto the balls of the feet (<b>2–3s</b>), pause (<b>1–2s</b>), lower slowly (<b>3s</b>) to a full stretch. The bent knee isolates the <b>soleus</b> — the biggest plantarflexor in running and the key Achilles protector on downhills. Progress by adding weight.</p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">C · Resisted inversion</span>
+        <span class="tgt">Posterior tibialis (below the inner ankle)</span>
+        <p>Sit with the leg out, loop a resistance band around the forefoot, anchored so it pulls your foot outward. Keep the heel still and turn the sole <b>inward and down</b> against the band (<b>2s</b>), then control back (<b>3s</b>). <b>No band?</b> Do single-leg heel raises with a rolled towel or small ball squeezed between your inner ankles — it forces you up over the big toe and biases the posterior tibialis.</p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">D · Pogo hops <span style="color:#666;font-weight:400">(from wk 16)</span></span>
+        <span class="tgt">Elastic / spring capacity</span>
+        <p>Small, fast hops in place off the balls of your feet — <b>stiff ankles, minimal knee bend</b>, quick ground contact, like skipping rope. Double-leg <b>3×20</b> → progress to single-leg sets of <b>10–15</b>. This builds the tendon's spring so it tolerates faster running and downhills (where your "threat" shows up).</p>
+      </div>
+    </div>
+
+    <div class="painrule">
+      <strong>Pain rule.</strong> Up to <strong>5/10</strong> during the exercise is OK <strong>if</strong> it's back to normal by the next morning and isn't getting worse week to week. If morning pain climbs, you limp, or it sharpens — drop back one level (less weight / both legs / fewer reps). Don't push through.
+    </div>
+
+    <div class="disclaimer">General training info, not medical advice. These symptoms are recurring — if pain worsens or doesn't settle, get a hands-on assessment from a physio or sports-medicine clinician.</div>
   </div>
 </div>
 </body>
