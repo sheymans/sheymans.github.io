@@ -7,134 +7,165 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#080808;color:#d4d4d4;font-family:'IBM Plex Mono','Fira Code',monospace;padding:2rem 1rem 5rem;min-height:100vh}
-.wrap{max-width:960px;margin:0 auto}
-.backlink{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:#666;text-decoration:none;display:inline-block;margin-bottom:1.5rem}
-.backlink:hover{color:#f97316}
-h1{font-family:'Unbounded',sans-serif;font-size:clamp(1.6rem,5.5vw,2.6rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:#fff;margin-bottom:.4rem}
-h1 span{color:#f97316;font-weight:700}
-.sub{font-size:.78rem;color:#888;margin-bottom:2.2rem}
+:root{
+  --bg:#ffffff; --surface:#f7f7f5; --ink:#1a1a1a; --mut:#6b6b6b; --faint:#a3a3a3;
+  --acc:#c2410c; --accf:#f97316; --ok:#15803d; --up:#b91c1c;
+  --bd:#e5e5e5; --bd2:#d4d4d4; --past:#9a9a9a; --pastbg:#fafafa;
+}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Mono','Fira Code',monospace;padding:2rem 1rem 5rem;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto}
+.backlink{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);text-decoration:none;display:inline-block;margin-bottom:1.5rem}
+.backlink:hover{color:var(--acc)}
+h1{font-family:'Unbounded',sans-serif;font-size:clamp(1.6rem,5.5vw,2.6rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--ink);margin-bottom:.4rem}
+h1 span{color:var(--acc);font-weight:700}
+.sub{font-size:.78rem;color:var(--mut);margin-bottom:2rem}
 
-.grid{display:flex;flex-direction:column;margin-bottom:2rem}
-.head,.row{display:grid;grid-template-columns:32px 70px 64px 1fr 1.3fr 1fr 42px 46px 1.4fr;gap:.6rem;padding:.55rem .2rem;align-items:start;border-bottom:1px solid #1a1a1a}
-.head{color:#777;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #2a2a2a}
-.head .km-h,.head .pc-h{text-align:right}
-.row{font-size:.76rem}
-.row.mark{border-top:1px solid #2a2a2a;padding-top:.7rem}
-.wk{color:#fff;font-weight:500}
-.dt{color:#888;font-size:.72rem}
-.ph{color:#bbb;font-size:.66rem;letter-spacing:.05em}
-.ph.race{color:#f97316;font-weight:600}
-.r{color:#d4d4d4}
-.r.q{color:#f97316}
-.r.race{color:#f97316;font-weight:600}
-.r.dim{color:#444}
-.r.span{grid-column:4 / span 3;color:#666;font-style:italic}
-.done{display:block;margin-top:.35rem;font-size:.62rem;line-height:1.5;color:#f97316;font-weight:500;letter-spacing:.01em}
-.done .t{display:block;color:#777;font-weight:400}
-.skip{display:block;margin-top:.35rem;font-size:.62rem;line-height:1.5;color:#b05c4a;font-weight:500;letter-spacing:.01em}
-.skip .t{display:block;color:#777;font-weight:400}
-.km{color:#fff;text-align:right;font-weight:500;font-size:.76rem}
-.km.act{color:#f97316}
-.pc{color:#888;text-align:right;font-weight:500;font-size:.72rem}
-.pc.ok{color:#5cb85c}
-.pc.up{color:#e5604d}
-.pc.na{color:#444}
-.note{color:#888;font-size:.62rem;line-height:1.45}
+/* ── band headers ── */
+.band{display:flex;align-items:center;gap:.8rem;margin:2.4rem 0 .5rem}
+.band:first-of-type{margin-top:1.4rem}
+.band .lbl{font-family:'Unbounded',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.band .rule{flex:1;height:1px;background:var(--bd2)}
+.band.now .lbl{color:var(--acc)}
+.band.now .rule{background:var(--accf)}
+details.donewrap{margin:0}
+details.donewrap>summary{list-style:none;cursor:pointer;user-select:none}
+details.donewrap>summary::-webkit-details-marker{display:none}
+summary.band .lbl::before{content:"\25b8  ";color:var(--faint);font-weight:400}
+details.donewrap[open]>summary.band .lbl::before{content:"\25be  "}
+summary.band:hover .lbl,summary.band:hover .cnt{color:var(--acc)}
+details.donewrap[open]>summary.band{margin-bottom:.5rem}
+.band .cnt{font-size:.62rem;color:var(--faint);letter-spacing:.06em;white-space:nowrap}
 
-.legend{font-size:.74rem;color:#888;line-height:1.9;border-top:1px solid #1a1a1a;padding-top:1.2rem}
-.legend strong{color:#fff;font-weight:500}
-.legend .qq{color:#f97316;font-weight:500}
+/* ── week grid ── */
+.grid{display:flex;flex-direction:column}
+.head,.wk{display:grid;grid-template-columns:26px 56px 54px 1fr .62fr 1fr .62fr 1fr 44px 46px;gap:.55rem;padding:.6rem .25rem;align-items:start;border-bottom:1px solid var(--bd)}
+.head{color:var(--mut);font-size:.55rem;letter-spacing:.13em;text-transform:uppercase;border-bottom:1px solid var(--bd2)}
+.head .kmh,.head .pch{text-align:right}
+.wk{font-size:.73rem}
+.wk.mark{border-top:1px solid var(--bd2);padding-top:.7rem}
+.wn{color:var(--ink);font-weight:500}
+.wd{color:var(--mut);font-size:.7rem}
+.wp{color:var(--mut);font-size:.63rem;letter-spacing:.04em}
+.wp.race{color:var(--acc);font-weight:600}
+.wp.rest{font-style:italic;color:var(--faint)}
+.km{color:var(--ink);text-align:right;font-weight:500;font-size:.73rem}
+.km.act{color:var(--acc)}
+.pc{color:var(--mut);text-align:right;font-weight:500;font-size:.7rem}
+.pc.ok{color:var(--ok)}
+.pc.up{color:var(--up)}
+.pc.na{color:var(--faint)}
 
-/* ── Right-foot protocol ── */
-.foot{margin-top:3.5rem;border-top:1px solid #2a2a2a;padding-top:2.2rem}
-.foot h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.2rem,4vw,1.8rem);font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:.4rem}
-.foot h2 span{color:#f97316;font-weight:700}
-.foot .sub{margin-bottom:1.8rem}
-.proto{display:flex;flex-direction:column;margin-bottom:1.6rem}
-.proto .wk-head,.proto .wk-row{display:grid;grid-template-columns:26px 54px 52px 1fr 1fr .85fr;gap:.55rem;padding:.6rem .2rem;align-items:start;border-bottom:1px solid #1a1a1a}
-.proto .wk-head{color:#777;font-size:.55rem;letter-spacing:.13em;text-transform:uppercase;border-bottom:1px solid #2a2a2a}
-.proto .wk-row{font-size:.71rem}
-.proto .wk-row.mark{border-top:1px solid #2a2a2a;padding-top:.75rem}
-.proto .wn{color:#fff;font-weight:500}
-.proto .wd{color:#888;font-size:.67rem}
-.proto .wph{color:#bbb;font-size:.6rem;letter-spacing:.03em}
-.proto .wph.rest{color:#777;font-style:italic}
-.proto .d{color:#d4d4d4;font-size:.69rem;line-height:1.45}
-.proto .d .i{display:block;margin-bottom:.18rem}
-.proto .d b{color:#f97316;font-weight:500}
-.proto .d.lite{color:#7f7f7f}
-.proto .d.lite b{color:#a8763a}
-.proto .wk-row.done .wn,.proto .wk-row.done .wd,.proto .wk-row.done .wph,.proto .wk-row.done .d{color:#3a3a3a}
-.proto .d.done{color:#3a3a3a}
-.proto .wk-row.done .d b,.proto .d.done b{color:#4a4a4a}
-.proto .dlabel{display:none}
-.tempo{font-size:.7rem;color:#888;line-height:1.7;margin-bottom:2rem;padding:.9rem 1.1rem;border:1px solid #1a1a1a;border-radius:6px;background:#0e0e0e}
-.tempo b{color:#f97316;font-weight:500}
-.tempo code{color:#fff;font-family:inherit}
-.gloss{font-size:.76rem;color:#bbb;line-height:1.7;border-top:1px solid #1a1a1a;padding-top:1.4rem}
-.gloss h3{color:#fff;font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:-.01em;margin:0 0 1rem}
-.gloss .ex{margin-bottom:1.3rem;padding-left:.9rem;border-left:2px solid #2a2a2a}
-.gloss .ex .nm{display:block;color:#f97316;font-weight:500;font-size:.8rem;margin-bottom:.3rem;letter-spacing:.01em}
-.gloss .ex .tgt{color:#777;font-size:.66rem;text-transform:uppercase;letter-spacing:.1em}
-.gloss .ex p{margin:.35rem 0 0}
-.gloss .ex b{color:#fff;font-weight:500}
-.ritual{margin-top:1.8rem;border-top:1px solid #1a1a1a;padding-top:1.4rem;font-size:.76rem;color:#bbb;line-height:1.7}
-.ritual h3{color:#fff;font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:-.01em;margin:0 0 1rem}
-.ritual .step{margin-bottom:.6rem;padding-left:.9rem;border-left:2px solid #2a2a2a}
-.ritual .step b{color:#f97316;font-weight:500}
-.ritual .step strong{color:#fff;font-weight:500}
-.painrule{margin-top:1.6rem;padding:1rem 1.1rem;border:1px solid #2a2a2a;border-radius:6px;background:#0e0e0e;font-size:.74rem;color:#bbb;line-height:1.7}
-.painrule strong{color:#f97316;font-weight:500}
-.disclaimer{margin-top:1.2rem;font-size:.64rem;color:#555;line-height:1.6;font-style:italic}
+/* ── a day cell: RUN block + FOOT block ── */
+.day{display:flex;flex-direction:column;gap:.28rem;min-width:0}
+.blk{font-size:.68rem;line-height:1.4;padding-left:.5rem;border-left:2px solid var(--bd)}
+.blk .tag{display:block;font-size:.5rem;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:.1rem}
+.blk.run{border-left-color:var(--accf)}
+.blk.run .plan{color:var(--ink)}
+.blk.foot{border-left-color:#cbd5c0}
+.blk.foot,.blk.foot .i{color:var(--mut);font-size:.63rem;line-height:1.35}
+.blk.foot .i{display:block}
+.blk.foot b{color:var(--acc);font-weight:500}
+.blk.gym{border-left-color:#b8c4d8}
+.blk.gym,.blk.gym .i{color:var(--mut);font-size:.63rem;line-height:1.35}
+.blk.gym b{color:#2f5d8c;font-weight:500}
+.dim{color:var(--faint)}
+.nogym{color:#dcdcdc;font-size:.63rem;padding-left:.5rem}
 
-@media (max-width:640px){
+/* logged run badges — markup reused verbatim from the old page */
+.done{display:block;margin-top:.25rem;font-size:.62rem;line-height:1.45;color:var(--acc);font-weight:500}
+.done .t{display:block;color:var(--mut);font-weight:400}
+.skip{display:block;margin-top:.25rem;font-size:.62rem;line-height:1.45;color:#a3412e;font-weight:500}
+.skip .t{display:block;color:var(--mut);font-weight:400}
+
+.note{grid-column:1/-1;color:var(--mut);font-size:.62rem;line-height:1.5;padding-left:.5rem;border-left:2px solid var(--bd);margin-top:.35rem}
+.note b{color:var(--acc);font-weight:500}
+
+/* ── DONE band: everything muted ── */
+.wk.past{background:var(--pastbg)}
+.wk.past .wn,.wk.past .km{color:var(--past)}
+.wk.past .wd,.wk.past .wp,.wk.past .note{color:#adadad}
+.wk.past .blk,.wk.past .blk .i,.wk.past .blk.foot,.wk.past .blk.gym{color:#adadad}
+.wk.past .blk .plan{color:#9a9a9a}
+.wk.past .blk.run{border-left-color:#e8c4a8}
+.wk.past .blk.foot{border-left-color:#e0e0e0}
+.wk.past .done{color:#b4795c}
+.wk.past .done .t,.wk.past .skip .t{color:#b0b0b0}
+.wk.past .blk b{color:#b4795c}
+.wk.past .pc.ok{color:#8ab48a}
+.wk.past .pc.up{color:#d29c94}
+.wk.past .pc.na{color:#c8c8c8}
+
+/* ── THIS WEEK card ── */
+.now{border:1px solid var(--accf);border-radius:8px;background:#fffaf6;padding:1.1rem 1.2rem;margin-bottom:.4rem}
+.now .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;margin-bottom:.9rem;padding-bottom:.7rem;border-bottom:1px solid #f6d9c2}
+.now .hd .t1{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.now .hd .t2{font-size:.7rem;color:var(--mut)}
+.now .hd .t3{font-size:.7rem;color:var(--acc);font-weight:500;margin-left:auto}
+.now .dayrow{display:grid;grid-template-columns:72px 1fr;gap:.8rem;padding:.55rem 0;border-bottom:1px solid #f2e3d6;align-items:start}
+.now .dayrow:last-of-type{border-bottom:0}
+.now .dayrow.rest{opacity:.75}
+.now .dn{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);font-weight:500;padding-top:.1rem}
+.now .dn .dd{display:block;color:var(--faint);letter-spacing:.03em;font-weight:400;text-transform:none;margin-top:.1rem}
+.now .cells{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem}
+.now .cells .blk{flex:1 1 250px;min-width:0}
+.now .note{margin-top:.8rem;border-left-color:var(--accf)}
+
+/* ── reference blocks ── */
+.legend{font-size:.73rem;color:var(--mut);line-height:1.85;border-top:1px solid var(--bd);padding-top:1.2rem;margin-top:2rem}
+.legend strong{color:var(--ink);font-weight:500}
+.legend .qq{color:var(--acc);font-weight:500}
+.foot{margin-top:3rem;border-top:1px solid var(--bd2);padding-top:2rem}
+.foot h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.15rem,4vw,1.7rem);font-weight:900;letter-spacing:-.03em;color:var(--ink);margin-bottom:.4rem}
+.foot h2 span{color:var(--acc);font-weight:700}
+.foot .sub{margin-bottom:1.5rem}
+.tempo{font-size:.7rem;color:var(--mut);line-height:1.7;margin-bottom:1.6rem;padding:.9rem 1.1rem;border:1px solid var(--bd);border-radius:6px;background:var(--surface)}
+.tempo b{color:var(--acc);font-weight:500}
+.tempo code{color:var(--ink);font-family:inherit}
+.gloss{font-size:.75rem;color:var(--ink);line-height:1.7;border-top:1px solid var(--bd);padding-top:1.3rem}
+.gloss h3{color:var(--ink);font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:-.01em;margin:0 0 1rem}
+.gloss .ex{margin-bottom:1.25rem;padding-left:.9rem;border-left:2px solid var(--bd2)}
+.gloss .ex .nm{display:block;color:var(--acc);font-weight:500;font-size:.8rem;margin-bottom:.3rem}
+.gloss .ex .tgt{color:var(--mut);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em}
+.gloss .ex p{margin:.35rem 0 0;color:var(--mut)}
+.gloss .ex b{color:var(--ink);font-weight:500}
+.gloss.gym .ex{border-left-color:#b8c4d8}
+.gloss.gym .ex .nm{color:#2f5d8c}
+.ritual{margin-top:1.7rem;border-top:1px solid var(--bd);padding-top:1.3rem;font-size:.75rem;color:var(--mut);line-height:1.7}
+.ritual h3{color:var(--ink);font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:700;margin:0 0 1rem}
+.ritual .step{margin-bottom:.6rem;padding-left:.9rem;border-left:2px solid var(--bd2)}
+.ritual .step b{color:var(--acc);font-weight:500}
+.ritual .step strong{color:var(--ink);font-weight:500}
+.painrule{margin-top:1.5rem;padding:1rem 1.1rem;border:1px solid var(--bd2);border-radius:6px;background:var(--surface);font-size:.74rem;color:var(--mut);line-height:1.7}
+.painrule strong{color:var(--acc);font-weight:500}
+.disclaimer{margin-top:1.1rem;font-size:.64rem;color:var(--faint);line-height:1.6;font-style:italic}
+
+@media (max-width:820px){
   body{padding:1.5rem .9rem 4rem}
   .head{display:none}
-  .row{
-    grid-template-columns:36px 1fr auto auto auto;
-    grid-template-areas:
-      "wk dt ph km pc"
-      "r1 r1 r1 r1 r1"
-      "r2 r2 r2 r2 r2"
-      "r3 r3 r3 r3 r3";
-    row-gap:.25rem;
-    column-gap:.6rem;
-    padding:.85rem .1rem;
+  .wk{
+    grid-template-columns:34px 1fr auto auto;
+    grid-template-areas:"wn wd km pc" "mon mon mon mon" "tue tue tue tue" "wed wed wed wed" "thu thu thu thu" "fri fri fri fri" "nt nt nt nt";
+    row-gap:.4rem;column-gap:.5rem;padding:.9rem .15rem;
   }
-  .row .wk{grid-area:wk}
-  .row .dt{grid-area:dt}
-  .row .ph{grid-area:ph;text-align:right}
-  .row .km{grid-area:km;text-align:right;min-width:42px}
-  .row .pc{grid-area:pc;text-align:right;min-width:42px}
-  .row .r1{grid-area:r1}
-  .row .r2{grid-area:r2}
-  .row .r3{grid-area:r3}
-  .row .r.span{grid-column:initial;grid-area:r1}
-  .row .r.span ~ .r{display:none}
-  .row .r{padding-left:.6rem;border-left:1px solid #1a1a1a}
-  .row .r.dim{color:#333}
-  .row .note{grid-column:1/-1;padding-left:.6rem;border-left:1px solid #1a1a1a;color:#888;font-size:.62rem;margin-top:.2rem}
-  .proto .wk-head{display:none}
-  .proto .wk-row{
-    grid-template-columns:30px 1fr;
-    grid-template-areas:
-      "wk ph"
-      "dt dt"
-      "mo mo"
-      "we we"
-      "fr fr";
-    row-gap:.3rem;column-gap:.55rem;padding:.95rem .1rem;
-  }
-  .proto .wk-row .wn{grid-area:wk}
-  .proto .wk-row .wph{grid-area:ph;text-align:right}
-  .proto .wk-row .wd{grid-area:dt}
-  .proto .wk-row .dmon{grid-area:mo}
-  .proto .wk-row .dwed{grid-area:we}
-  .proto .wk-row .dfri{grid-area:fr}
-  .proto .wk-row .d{padding-left:.6rem;border-left:1px solid #1a1a1a}
-  .proto .dlabel{display:inline;color:#f97316;font-weight:500;letter-spacing:.06em;margin-right:.35rem}
-  .proto .d.lite .dlabel{color:#a8763a}
+  .wk .wn{grid-area:wn}
+  .wk .wd{grid-area:wd}
+  .wk .wp{display:none}
+  .wk .km{grid-area:km}
+  .wk .pc{grid-area:pc}
+  .wk .d-mon{grid-area:mon}
+  .wk .d-tue{grid-area:tue}
+  .wk .d-wed{grid-area:wed}
+  .wk .d-thu{grid-area:thu}
+  .wk .d-fri{grid-area:fri}
+  .wk .note{grid-area:nt}
+  .wk .nogym{display:none}
+  .day::before{display:block;font-size:.5rem;letter-spacing:.14em;color:var(--faint);margin-bottom:.15rem}
+  .wk .d-mon::before{content:"MON"} .wk .d-tue::before{content:"TUE"}
+  .wk .d-wed::before{content:"WED"} .wk .d-thu::before{content:"THU"}
+  .wk .d-fri::before{content:"FRI"}
+  .now{padding:.9rem .8rem}
+  .now .dayrow{grid-template-columns:1fr;gap:.35rem}
+  .now .cells .blk{flex:1 1 100%}
 }
 </style>
 </head>
@@ -142,42 +173,56 @@ h1 span{color:#f97316;font-weight:700}
 <div class="wrap">
   <a href="../index.html" class="backlink">&larr; running</a>
   <h1>HALF MARATHON<br><span>May 25 → Nov 7</span></h1>
-  <div class="sub">Joshua Tree, CA &middot; night race, 6:00 PM start &middot; 3 days/week &middot; 24 weeks &middot; goal: finish inside the 4:00 cutoff</div>
+  <div class="sub">Joshua Tree, CA &middot; night race, 6:00 PM start &middot; 24 weeks &middot; goal: finish inside the 4:00 cutoff<br>One schedule: runs, right-foot protocol, and gym &mdash; Mon to Fri.</div>
 
+  <details class="donewrap">
+    <summary class="band"><span class="lbl">Done</span><span class="rule"></span><span class="cnt">weeks 1&ndash;15 &middot; 242.7 km logged &middot; click to expand</span></summary>
   <div class="grid">
-    <div class="head">
-      <div>Wk</div><div>Date</div><div>Phase</div>
-      <div>Run 1</div><div>Run 2</div><div>Run 3</div>
-      <div class="km-h">Km</div><div class="pc-h">&Delta;%</div><div>Note</div>
+      <div class="head"><div>Wk</div><div>Date</div><div>Phase</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div class="kmh">Km</div><div class="pch">&Delta;%</div></div>
+      <div class="wk past mark"><div class="wn">1</div><div class="wd">May 25</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.08k<span class="t">50:33 ↑140m</span></span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.06k<span class="t">50:52 ↑83m</span></span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 6k</span><span class="skip">✕ skipped<span class="t">knee</span></span></div></div><div class="km act">10.1</div><div class="pc na">—</div><div class="note">Left knee — hurt it Friday morning putting on running shoes.</div></div>
+      <div class="wk past"><div class="wn">2</div><div class="wd">Jun 1</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.04k<span class="t">54:10 ↑80m</span></span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.06k<span class="t">52:32 ↑77m</span></span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 6k</span><span class="done">✓ 6.10k<span class="t">59:42 ↑101m</span></span></div></div><div class="km act">16.2</div><div class="pc up">+59.8%</div></div>
+      <div class="wk past"><div class="wn">3</div><div class="wd">Jun 8</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.09k<span class="t">49:04 ↑83m</span></span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.07k<span class="t">51:57 ↑85m</span></span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 7k</span><span class="done">✓ 7.05k<span class="t">1:12:30 ↑135m</span></span></div></div><div class="km act">17.2</div><div class="pc ok">+6.2%</div><div class="note">Wed, ~2h after the run the left knee was a bit painful again. Thu it was stiff but not painful. Fri run mostly pain-free with 2–3 small pangs in the left knee; whole weekend after was pain-free.</div></div>
+      <div class="wk past"><div class="wn">4</div><div class="wd">Jun 15</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.09k<span class="t">50:11 ↑89m</span></span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.07k<span class="t">50:36 ↑79m</span></span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 8k</span><span class="done">✓ 8.17k<span class="t">1:20:47 ↑222m</span></span></div></div><div class="km act">18.3</div><div class="pc ok">+6.5%</div><div class="note">Mon run on heavy legs with a bit of pain under the right ankle (very mild). Fri run had slight tightness in the right hamstring, but it didn't last the whole run.</div></div>
+      <div class="wk past"><div class="wn">5</div><div class="wd">Jun 22</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.07k<span class="t">49:49 ↑80m</span></span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.06k<span class="t">51:43 ↑58m</span></span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 9k</span><span class="done">✓ 9.05k<span class="t">1:30:12 ↑175m</span></span></div></div><div class="km act">19.2</div><div class="pc ok">+4.8%</div><div class="note">Mon run: slight threat of achilles pain but it did not materialize.</div></div>
+      <div class="wk past"><div class="wn">6</div><div class="wd">Jun 29</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.05k<span class="t">51:41 ↑85m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×30s</span><span class="i"><b>A</b> 3×10 both legs · <b>partial range</b> (heel to platform, not below yet)</span><span class="i"><b>B</b> 2×12 light</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.03k<span class="t">51:31 ↑97m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 10k</span><span class="done">✓ 10.02k<span class="t">1:40:12 ↑233m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×30s only</span></div></div><div class="km act">20.1</div><div class="pc ok">+4.8%</div></div>
+      <div class="wk past"><div class="wn">7</div><div class="wd">Jul 6</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.06k<span class="t">50:37 ↑116m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×30s</span><span class="i"><b>A</b> 3×12 both legs · <b>full range</b> (heel drops below platform)</span><span class="i"><b>B</b> 3×12 light–moderate</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 6.15k<span class="t">1:02:41 ↑155m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 11k</span><span class="done">✓ 11.03k<span class="t">1:47:44 ↑230m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×30s only</span></div></div><div class="km act">22.2</div><div class="pc up">+10.6%</div><div class="note">Sun (Jul 12): a bit of Achilles discomfort at rest.</div></div>
+      <div class="wk past"><div class="wn">8</div><div class="wd">Jul 13</div><div class="wp ">Deload</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 6.06k<span class="t">1:10:40 ↑134m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><i>Flare response — hold the progression, don't push through.</i></span><span class="i"><b>ISO</b> 5×40s only · both legs · pain ≤3/10</span><span class="i">no <b>A</b> · no <b>B</b> · <b>C</b> postponed to wk 9</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 4k · flat</span><span class="done">✓ 4.09k<span class="t">42:23 ↑68m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">If Tue &amp; Wed mornings were calm:</span><span class="i"><b>ISO</b> 5×40s</span><span class="i"><b>A</b> 3×10 both legs · slow · stop at any pang</span><span class="i"><b>B</b> 2×12 light</span><span class="i">Not calm → <b>ISO</b> only again</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 7k · flat</span><span class="done">✓ 7.04k<span class="t">1:15:43 ↑160m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s only</span></div></div><div class="km act">17.2</div><div class="pc ok">−23%</div><div class="note">Mon (Jul 13) — setback. After 700m on a slight uphill, a slight Achilles pang, then several medium ones; had to walk and avoid steep spots. Worked down to 1 min run / 1 min walk, then finished on 3 min run / 1 min walk pain-free. Deload: rest of the week flat &amp; easy, run/walk OK, no long run. Rule: pain ≤3/10 during and back to normal by next morning — otherwise walk it home. Tue: Achilles fine. Wed run: eased in with 1' walk/1' run → 1'/2' → 1'/3' → one more 1' walk, then ran the rest — no pangs during, fine after. Fri: tough on the Achilles — same warm-up as Wed, but 1 medium pang and had to walk the last 500m (route had ↑160m — not flat). Fri ISO done pain-free. Sat: left knee hurts on and off again (like weeks 1–3).</div></div>
+      <div class="wk past mark"><div class="wn">9</div><div class="wd">Jul 20</div><div class="wp ">Rest</div><div class="day d-mon"><div class="blk run dim"><span class="tag">RUN</span>—</div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><i>Travel week — only the Fri ISO actually got done.</i></span><span class="i"><b>ISO</b> 5×40s when you can</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run dim"><span class="tag">RUN</span>—</div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run dim"><span class="tag">RUN</span>—</div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s only</span></div></div><div class="km ">0</div><div class="pc na">—</div><div class="note">Full rest from running — Friday's 8k dropped by choice after the wk-8 pang: 9 straight days off running (Jul 18–27) to let the Achilles settle. Strength work continues; daily ISO holds optional; walking is fine and good.</div></div>
+      <div class="wk past mark"><div class="wn">10</div><div class="wd">Jul 27</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 4k · flat</span><span class="done">✓ 4.03k<span class="t">40:22 ↑9m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><i>Eased back in with ISO after travel.</i></span><span class="i"><b>ISO</b> 5×40s</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k · flat</span><span class="done">✓ 5.01k<span class="t">50:01 ↑6m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s</span><span class="i"><b>A</b> 3×10 both legs · slow</span><span class="i"><b>B</b> 2×12 light</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k · flat</span><span class="done">✓ 6.03k<span class="t">55:27 ↑10m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km act">15.1</div><div class="pc na">—</div><div class="note">Re-entry test week — all flat, run/walk openings, each run gated on next-morning calm. If the tendon pangs on these after 9 days off, book a physio. Everything stays easy to race day; hills return gradually later, uphills before downhills. Whole week done genuinely flat (↑9m, ↑6m, ↑10m), zero pangs on any — re-entry clean.</div></div>
+      <div class="wk past"><div class="wn">11</div><div class="wd">Aug 3</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.05k<span class="t">55:13 ↑112m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s</span><span class="i"><b>A</b> 3×12 both legs · full range</span><span class="i"><b>B</b> 3×12 moderate</span><span class="i"><b>C</b> 2×12 each <i>(new)</i></span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 6.02k<span class="t">1:02:15 ↑136m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 8k</span><span class="done">✓ 8.07k<span class="t">1:19:48 ↑156m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km act">19.1</div><div class="pc up">+27%</div><div class="note">All three runs hilly (↑112m / 136m / 156m) and pang-free — the Achilles is now tolerating grade again. Long run back up to 8k.</div></div>
+      <div class="wk past"><div class="wn">12</div><div class="wd">Aug 10</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.11k<span class="t">51:22 ↑102m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>A</b> 3×8 each · single-leg <b>eccentric only</b> (push up on both, lift one foot, lower on one in 3s)</span><span class="i"><b>B</b> 3×12 each</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 6.05k<span class="t">1:01:02 ↑116m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 10k</span><span class="done">✓ 10.16k<span class="t">1:21:29 ↑35m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km act">21.3</div><div class="pc up">+11%</div><div class="note">Friday's long run was a <b style="color:#f97316;font-weight:500">10k PR</b> — 10.16k in 1:21:29 (8:01/km) on a flat route (↑35m), well under the 1:40:12 of the wk-6 10k. Week done, hills earlier in the week, no pangs.</div></div>
+      <div class="wk past mark"><div class="wn">13</div><div class="wd">Aug 17</div><div class="wp ">Rest</div><div class="day d-mon"><div class="blk run dim"><span class="tag">RUNS &middot; WHOLE WEEK</span>vacation · optional easy 30–40 min</div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><i>Travel — hold, don't progress. Just need a step.</i></span><span class="i"><b>A</b> 3×8 each single-leg eccentric only, bodyweight</span><span class="i"><b>C</b> towel version 3×15</span><span class="i">or <b>ISO</b> only if tight for space</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×30s only</span></div></div><div class="km ">6</div><div class="pc ok">−71%</div></div>
+      <div class="wk past mark"><div class="wn">14</div><div class="wd">Aug 24</div><div class="wp ">Build</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.10k<span class="t">47:30 ↑100m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>A</b> 3×10 each · single-leg <b>full</b> (up and down on one), bodyweight</span><span class="i"><b>B</b> 3×12 each</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 6.07k<span class="t">59:10 ↑130m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 10k</span><span class="done">✓ 10.02k<span class="t">1:38:01 ↑184m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s only</span></div></div><div class="km act">21.2</div><div class="pc na">—</div><div class="note">Back from vacation: repeat the 10k long run, don't jump. All runs stay easy from here to the race. Week done at 21.2k on hills again (↑100m / 130m / 184m) — Wed and Fri both ~9:45/km, back on easy pace after the flat wk-12 PR.</div></div>
+      <div class="wk past"><div class="wn">15</div><div class="wd">Aug 31</div><div class="wp ">Build</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.35k<span class="t">54:52 ↑120m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>A</b> 3×8 each · single-leg <b>+ ~5 kg</b> (first added load)</span><span class="i"><b>B</b> 3×10 each heavier</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 6.03k<span class="t">1:01:29 ↑147m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 11k</span><span class="done">✓ 11.28k<span class="t">1:50:17 ↑247m</span></span></div><div class="blk foot is-done"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s only</span></div></div><div class="km act">22.7</div><div class="pc ok">+7%</div><div class="note">From here, move long runs onto dirt/gravel where possible — firm footing first, sand comes later. Week done at 22.7k. Friday was the longest run since the wk-7 flare week and the biggest climb in the log (↑247m), still at 9:47/km — the same pace as that wk-7 11k.</div></div>
+  </div>
+  </details>
+
+  <div class="band now"><span class="lbl">This week</span><span class="rule"></span><span class="cnt">Sep 7 &ndash; Sep 11</span></div>
+    <div class="now">
+      <div class="hd"><span class="t1">Week 16</span><span class="t2">Sep 7 &middot; Build</span><span class="t3">24 km planned &middot; +6%</span></div>
+      <div class="dayrow"><div class="dn">MON<span class="dd">Sep 7</span></div><div class="cells"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 2.76k<span class="t">28:22</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 3×8 each · single-leg <b>+ ~6–8 kg</b></span><span class="i"><b>E</b> 3×30s both legs · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div></div>
+      <div class="dayrow"><div class="dn">TUE<span class="dd">Sep 8</span></div><div class="cells"><div class="blk gym"><span class="tag">GYM · upper, cuff-sparing</span><span class="i"><b>1 · DB floor press</b> 3×8–10 — neutral grip, elbows ~45°</span><span class="i"><b>2 · Single-arm DB row</b> 3×10 each — three-point on the flat bench, elbow tucked</span><span class="i"><b>3 · Barbell curl</b> 3×10–12</span><span class="i"><b>4 · Band triceps pushdown</b> 3×12–15 — band over the pull-up bar</span></div></div></div>
+      <div class="dayrow"><div class="dn">WED<span class="dd">Sep 9</span></div><div class="cells"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div></div>
+      <div class="dayrow"><div class="dn">THU<span class="dd">Sep 10</span></div><div class="cells"><div class="blk gym"><span class="tag">GYM</span>Repeat Tuesday — same four lifts, same loads.</div></div></div>
+      <div class="dayrow"><div class="dn">FRI<span class="dd">Sep 11</span></div><div class="cells"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 12k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s only</span></div></div></div>
+      <div class="note">Mon cut short — bee sting ~1.5k in, walked the rest back. Nothing to do with the tendon; no make-up mileage.</div>
     </div>
 
-    <div class="row mark"><div class="wk">1</div><div class="dt">May 25</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.08k<span class="t">50:33 ↑140m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.06k<span class="t">50:52 ↑83m</span></span></div><div class="r r3">Long 6k<span class="skip">✕ skipped<span class="t">knee</span></span></div><div class="km act">10.1</div><div class="pc na">—</div><div class="note">Left knee — hurt it Friday morning putting on running shoes.</div></div>
-    <div class="row"><div class="wk">2</div><div class="dt">Jun 1</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.04k<span class="t">54:10 ↑80m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.06k<span class="t">52:32 ↑77m</span></span></div><div class="r r3">Long 6k<span class="done">✓ 6.10k<span class="t">59:42 ↑101m</span></span></div><div class="km act">16.2</div><div class="pc up">+59.8%</div></div>
-    <div class="row"><div class="wk">3</div><div class="dt">Jun 8</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.09k<span class="t">49:04 ↑83m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.07k<span class="t">51:57 ↑85m</span></span></div><div class="r r3">Long 7k<span class="done">✓ 7.05k<span class="t">1:12:30 ↑135m</span></span></div><div class="km act">17.2</div><div class="pc ok">+6.2%</div><div class="note">Wed, ~2h after the run the left knee was a bit painful again. Thu it was stiff but not painful. Fri run mostly pain-free with 2–3 small pangs in the left knee; whole weekend after was pain-free.</div></div>
-    <div class="row"><div class="wk">4</div><div class="dt">Jun 15</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.09k<span class="t">50:11 ↑89m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.07k<span class="t">50:36 ↑79m</span></span></div><div class="r r3">Long 8k<span class="done">✓ 8.17k<span class="t">1:20:47 ↑222m</span></span></div><div class="km act">18.3</div><div class="pc ok">+6.5%</div><div class="note">Mon run on heavy legs with a bit of pain under the right ankle (very mild). Fri run had slight tightness in the right hamstring, but it didn't last the whole run.</div></div>
-    <div class="row"><div class="wk">5</div><div class="dt">Jun 22</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.07k<span class="t">49:49 ↑80m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.06k<span class="t">51:43 ↑58m</span></span></div><div class="r r3">Long 9k<span class="done">✓ 9.05k<span class="t">1:30:12 ↑175m</span></span></div><div class="km act">19.2</div><div class="pc ok">+4.8%</div><div class="note">Mon run: slight threat of achilles pain but it did not materialize.</div></div>
-    <div class="row"><div class="wk">6</div><div class="dt">Jun 29</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.05k<span class="t">51:41 ↑85m</span></span></div><div class="r r2">Easy 5k<span class="done">✓ 5.03k<span class="t">51:31 ↑97m</span></span></div><div class="r r3">Long 10k<span class="done">✓ 10.02k<span class="t">1:40:12 ↑233m</span></span></div><div class="km act">20.1</div><div class="pc ok">+4.8%</div></div>
-    <div class="row"><div class="wk">7</div><div class="dt">Jul 6</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.06k<span class="t">50:37 ↑116m</span></span></div><div class="r r2">Easy 6k<span class="done">✓ 6.15k<span class="t">1:02:41 ↑155m</span></span></div><div class="r r3">Long 11k<span class="done">✓ 11.03k<span class="t">1:47:44 ↑230m</span></span></div><div class="km act">22.2</div><div class="pc up">+10.6%</div><div class="note">Sun (Jul 12): a bit of Achilles discomfort at rest.</div></div>
-    <div class="row"><div class="wk">8</div><div class="dt">Jul 13</div><div class="ph">Deload</div><div class="r r1">Easy 6k<span class="done">✓ 6.06k<span class="t">1:10:40 ↑134m</span></span></div><div class="r r2">Easy 4k · flat<span class="done">✓ 4.09k<span class="t">42:23 ↑68m</span></span></div><div class="r r3">Easy 7k · flat<span class="done">✓ 7.04k<span class="t">1:15:43 ↑160m</span></span></div><div class="km act">17.2</div><div class="pc ok">−23%</div><div class="note">Mon (Jul 13) — setback. After 700m on a slight uphill, a slight Achilles pang, then several medium ones; had to walk and avoid steep spots. Worked down to 1 min run / 1 min walk, then finished on 3 min run / 1 min walk pain-free. Deload: rest of the week flat &amp; easy, run/walk OK, no long run. Rule: pain ≤3/10 during and back to normal by next morning — otherwise walk it home. Tue: Achilles fine. Wed run: eased in with 1' walk/1' run → 1'/2' → 1'/3' → one more 1' walk, then ran the rest — no pangs during, fine after. Fri: tough on the Achilles — same warm-up as Wed, but 1 medium pang and had to walk the last 500m (route had ↑160m — not flat). Fri ISO done pain-free. Sat: left knee hurts on and off again (like weeks 1–3).</div></div>
-    <div class="row mark"><div class="wk">9</div><div class="dt">Jul 20</div><div class="ph">Rest</div><div class="r r1 dim">—</div><div class="r r2 dim">—</div><div class="r r3 dim">—</div><div class="km">0</div><div class="pc na">—</div><div class="note">Full rest from running — Friday's 8k dropped by choice after the wk-8 pang: 9 straight days off running (Jul 18–27) to let the Achilles settle. Strength work continues; daily ISO holds optional; walking is fine and good.</div></div>
-    <div class="row mark"><div class="wk">10</div><div class="dt">Jul 27</div><div class="ph">Base</div><div class="r r1">Easy 4k · flat<span class="done">✓ 4.03k<span class="t">40:22 ↑9m</span></span></div><div class="r r2">Easy 5k · flat<span class="done">✓ 5.01k<span class="t">50:01 ↑6m</span></span></div><div class="r r3">Easy 6k · flat<span class="done">✓ 6.03k<span class="t">55:27 ↑10m</span></span></div><div class="km act">15.1</div><div class="pc na">—</div><div class="note">Re-entry test week — all flat, run/walk openings, each run gated on next-morning calm. If the tendon pangs on these after 9 days off, book a physio. Everything stays easy to race day; hills return gradually later, uphills before downhills. Whole week done genuinely flat (↑9m, ↑6m, ↑10m), zero pangs on any — re-entry clean.</div></div>
-    <div class="row"><div class="wk">11</div><div class="dt">Aug 3</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.05k<span class="t">55:13 ↑112m</span></span></div><div class="r r2">Easy 6k<span class="done">✓ 6.02k<span class="t">1:02:15 ↑136m</span></span></div><div class="r r3">Long 8k<span class="done">✓ 8.07k<span class="t">1:19:48 ↑156m</span></span></div><div class="km act">19.1</div><div class="pc up">+27%</div><div class="note">All three runs hilly (↑112m / 136m / 156m) and pang-free — the Achilles is now tolerating grade again. Long run back up to 8k.</div></div>
-    <div class="row"><div class="wk">12</div><div class="dt">Aug 10</div><div class="ph">Base</div><div class="r r1">Easy 5k<span class="done">✓ 5.11k<span class="t">51:22 ↑102m</span></span></div><div class="r r2">Easy 6k<span class="done">✓ 6.05k<span class="t">1:01:02 ↑116m</span></span></div><div class="r r3">Long 10k<span class="done">✓ 10.16k<span class="t">1:21:29 ↑35m</span></span></div><div class="km act">21.3</div><div class="pc up">+11%</div><div class="note">Friday's long run was a <b style="color:#f97316;font-weight:500">10k PR</b> — 10.16k in 1:21:29 (8:01/km) on a flat route (↑35m), well under the 1:40:12 of the wk-6 10k. Week done, hills earlier in the week, no pangs.</div></div>
-    <div class="row mark"><div class="wk">13</div><div class="dt">Aug 17</div><div class="ph">Rest</div><div class="r span">vacation · optional easy 30–40 min</div><div class="km">6</div><div class="pc ok">−71%</div></div>
-    <div class="row mark"><div class="wk">14</div><div class="dt">Aug 24</div><div class="ph">Build</div><div class="r r1">Easy 5k<span class="done">✓ 5.10k<span class="t">47:30 ↑100m</span></span></div><div class="r r2">Easy 6k<span class="done">✓ 6.07k<span class="t">59:10 ↑130m</span></span></div><div class="r r3">Long 10k<span class="done">✓ 10.02k<span class="t">1:38:01 ↑184m</span></span></div><div class="km act">21.2</div><div class="pc na">—</div><div class="note">Back from vacation: repeat the 10k long run, don't jump. All runs stay easy from here to the race. Week done at 21.2k on hills again (↑100m / 130m / 184m) — Wed and Fri both ~9:45/km, back on easy pace after the flat wk-12 PR.</div></div>
-    <div class="row"><div class="wk">15</div><div class="dt">Aug 31</div><div class="ph">Build</div><div class="r r1">Easy 5k<span class="done">✓ 5.35k<span class="t">54:52 ↑120m</span></span></div><div class="r r2">Easy 6k<span class="done">✓ 6.03k<span class="t">1:01:29 ↑147m</span></span></div><div class="r r3">Long 11k<span class="done">✓ 11.28k<span class="t">1:50:17 ↑247m</span></span></div><div class="km act">22.7</div><div class="pc ok">+7%</div><div class="note">From here, move long runs onto dirt/gravel where possible — firm footing first, sand comes later. Week done at 22.7k. Friday was the longest run since the wk-7 flare week and the biggest climb in the log (↑247m), still at 9:47/km — the same pace as that wk-7 11k.</div></div>
-    <div class="row"><div class="wk">16</div><div class="dt">Sep 7</div><div class="ph">Build</div><div class="r r1">Easy 6k<span class="done">✓ 2.76k<span class="t">28:22</span></span></div><div class="r r2">Easy 6k</div><div class="r r3">Long 12k</div><div class="km">24</div><div class="pc ok">+6%</div><div class="note">Mon cut short — bee sting ~1.5k in, walked the rest back. Nothing to do with the tendon; no make-up mileage.</div></div>
-    <div class="row"><div class="wk">17</div><div class="dt">Sep 14</div><div class="ph">Build</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 13k</div><div class="km">25</div><div class="pc ok">+4%</div></div>
-    <div class="row"><div class="wk">18</div><div class="dt">Sep 21</div><div class="ph">Build</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 14k</div><div class="km">26</div><div class="pc ok">+4%</div><div class="note">If the tendon is calm, start including a few short sandy stretches in the long run.</div></div>
-    <div class="row"><div class="wk">19</div><div class="dt">Sep 28</div><div class="ph">Build</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 7k</div><div class="r r3">Long 15k</div><div class="km">28</div><div class="pc ok">+8%</div></div>
-    <div class="row mark"><div class="wk">20</div><div class="dt">Oct 5</div><div class="ph">Peak</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 7k</div><div class="r r3 q">Rehearsal 16k</div><div class="km">29</div><div class="pc ok">+4%</div><div class="note">Race rehearsal #1 — and the first 16k. Gate for wk 21: pang-free here means 18k next week. Start at dusk, finish by headlamp. Sandy sections in. Practice fueling and the run/walk plan — run the firm stretches, walk deep sand and steep grades.</div></div>
-    <div class="row"><div class="wk">21</div><div class="dt">Oct 12</div><div class="ph">Peak</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 7k</div><div class="r r3 q">Rehearsal 18k</div><div class="km">31</div><div class="pc ok">+7%</div><div class="note">Race rehearsal #2 — lock in the routine: same pre-run meal timing, same gear, same run/walk rhythm. Cutoff needs 11:22/km; easy pace leaves ~35 min buffer. <b style="color:#f97316;font-weight:500">Peak long run, 22 days out</b> — ~3:00 on feet, and it cuts the gap to race distance to 3k. Only go 18k if the wk-20 16k was pang-free and the next mornings were calm; otherwise repeat 16k.</div></div>
-    <div class="row mark"><div class="wk">22</div><div class="dt">Oct 19</div><div class="ph">Taper</div><div class="r r1">Easy 6k</div><div class="r r2">Easy 6k</div><div class="r r3">Long 14k</div><div class="km">26</div><div class="pc ok">−16%</div><div class="note">Long run held at 14k — only 12% under the wk-21 rehearsal and 15 days out, so race-specific endurance stays close to race day. The taper proper is wk 23.</div></div>
-    <div class="row"><div class="wk">23</div><div class="dt">Oct 26</div><div class="ph">Taper</div><div class="r r1">Easy 5k</div><div class="r r2">Easy 5k</div><div class="r r3">Long 9k</div><div class="km">19</div><div class="pc ok">−27%</div></div>
-    <div class="row mark"><div class="wk">24</div><div class="dt">Nov 2</div><div class="ph race">Race</div><div class="r r1">Easy 3k</div><div class="r r2">Easy 2k shakeout</div><div class="r r3 race">Race 21.1k · Sat Nov 7, 6 PM</div><div class="km">26</div><div class="pc up">+37%</div></div>
+  <div class="band"><span class="lbl">Ahead</span><span class="rule"></span><span class="cnt">weeks 17&ndash;24 &middot; race Sat Nov 7</span></div>
+  <div class="grid">
+      <div class="head"><div>Wk</div><div>Date</div><div>Phase</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div class="kmh">Km</div><div class="pch">&Delta;%</div></div>
+      <div class="wk"><div class="wn">17</div><div class="wd">Sep 14</div><div class="wp ">Build</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 4×6 each · single-leg <b>+ ~8–10 kg</b> (heavy — last 1–2 reps hard)</span><span class="i"><b>E</b> 4×30s both legs · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i">Repeat Monday</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 13k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 5×40s only</span></div></div><div class="km ">25</div><div class="pc ok">+4%</div></div>
+      <div class="wk"><div class="wn">18</div><div class="wd">Sep 21</div><div class="wp ">Build</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>E</b> 3×40s each · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>D</b> pogos 3×15 double-leg (low, quiet, fast) <i>(new)</i></span><span class="i"><b>A</b> 2×10 each bodyweight</span><span class="i"><b>ISO</b> 2×30s</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 14k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km ">26</div><div class="pc ok">+4%</div><div class="note">If the tendon is calm, start including a few short sandy stretches in the long run.</div></div>
+      <div class="wk"><div class="wn">19</div><div class="wd">Sep 28</div><div class="wp ">Build</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>E</b> 3×40s each · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 7k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>D</b> pogos 3×20 double-leg</span><span class="i"><b>A</b> 2×10 each bodyweight</span><span class="i"><b>ISO</b> 2×30s</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 15k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km ">28</div><div class="pc ok">+8%</div></div>
+      <div class="wk mark"><div class="wn">20</div><div class="wd">Oct 5</div><div class="wp ">Peak</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>E</b> 3×40s each · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 7k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>D</b> pogos 3×20 double-leg + 2×8 each <b>single-leg</b> mini-hops <i>(new)</i></span><span class="i"><b>ISO</b> 2×30s</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run q"><span class="tag">RUN</span><span class="plan">Rehearsal 16k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km ">29</div><div class="pc ok">+4%</div><div class="note">Race rehearsal #1 — and the first 16k. Gate for wk 21: pang-free here means 18k next week. Start at dusk, finish by headlamp. Sandy sections in. Practice fueling and the run/walk plan — run the firm stretches, walk deep sand and steep grades.</div></div>
+      <div class="wk"><div class="wn">21</div><div class="wd">Oct 12</div><div class="wp ">Peak</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>E</b> 3×40s each · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 7k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>D</b> pogos 3×12 each single-leg</span><span class="i"><b>ISO</b> 2×30s</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run q"><span class="tag">RUN</span><span class="plan">Rehearsal 18k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km ">31</div><div class="pc ok">+7%</div><div class="note">Race rehearsal #2 — lock in the routine: same pre-run meal timing, same gear, same run/walk rhythm. Cutoff needs 11:22/km; easy pace leaves ~35 min buffer. <b style="color:#f97316;font-weight:500">Peak long run, 22 days out</b> — ~3:00 on feet, and it cuts the gap to race distance to 3k. Only go 18k if the wk-20 16k was pang-free and the next mornings were calm; otherwise repeat 16k.</div></div>
+      <div class="wk mark"><div class="wn">22</div><div class="wd">Oct 19</div><div class="wp ">Taper</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 2×6 each + load (drop to 2 sets, same weight)</span><span class="i"><b>E</b> 2×30s each · knees ~30°</span><span class="i"><b>C</b> 2×15 each</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>D</b> pogos 2×15 double-leg (easy)</span><span class="i"><b>ISO</b> 2×30s</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 14k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 3×30s only</span></div></div><div class="km ">26</div><div class="pc ok">−16%</div><div class="note">Long run held at 14k — only 12% under the wk-21 rehearsal and 15 days out, so race-specific endurance stays close to race day. The taper proper is wk 23.</div></div>
+      <div class="wk"><div class="wn">23</div><div class="wd">Oct 26</div><div class="wp ">Taper</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 2×8 each bodyweight (no added load)</span><span class="i"><b>E</b> 2×30s both legs · knees ~30°</span><span class="i"><b>ISO</b> 3×30s</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 2×8 each bodyweight</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><i>no pogos this week</i></span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 9k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 2×30s only</span></div></div><div class="km ">19</div><div class="pc ok">−27%</div></div>
+      <div class="wk mark"><div class="wn">24</div><div class="wd">Nov 2</div><div class="wp race">Race</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 3k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><b>A</b> 2×10 each bodyweight (light, just priming)</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Floor press</b> 3×8–10</span><span class="i"><b>Row</b> 3×10 ea</span><span class="i"><b>Curl</b> 3×10–12</span><span class="i"><b>Pushdown</b> 3×12–15</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 2k shakeout</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 2×30s only</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span>repeat Tue</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Race 21.1k · Sat Nov 7, 6 PM</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i">Rest the feet — nothing. <b>Race Sat Nov 7, 6:00 PM.</b></span></div></div><div class="km ">26</div><div class="pc up">+37%</div></div>
   </div>
 
   <div class="legend">
+    <strong>Reading it</strong> — three bands: <strong>Done</strong> (greyed, the full record — every logged run and the foot work behind it), <strong>This week</strong> (the orange card, day by day), and <strong>Ahead</strong> (still to come). Each week shows Mon–Fri: <span class="qq">RUN</span> and <span style="color:#2f5d8c">FOOT</span> work on Mon/Wed/Fri, <span style="color:#2f5d8c">GYM</span> on Tue/Thu.<br>
     <strong>Goal</strong> — finish inside the 4:00 cutoff (needs 11:22/km; easy pace ~10:00/km leaves ~35 min buffer). Night race on desert dirt roads with loose-sand sections — so rehearsals, not intervals.<br>
     <strong>Easy</strong> — Zone 1–2, fully conversational. If you can't hold a sentence, slow down. Every run in this plan is easy — there is no speed work.<br>
     <span class="qq">Rehearsal</span> — race-simulation long run: start at dusk, finish by headlamp, sandy sections in, practice fueling and run/walk (run the firm stretches, walk deep sand and steep grades).<br>
@@ -186,155 +231,16 @@ h1 span{color:#f97316;font-weight:700}
     <strong>Km</strong> — planned weekly volume; once a week is complete it turns <span style="color:#f97316">orange</span> and shows the actual distance run.<br>
     <strong>&Delta;%</strong> — week-over-week change in volume: actual-vs-actual for completed weeks, planned-vs-planned ahead. <span style="color:#5cb85c">Green</span> ≤10%, <span style="color:#e5604d">red</span> &gt;10%. The red weeks (the early-August re-entry ramp, Aug 24, race week) are planned step-ups after rest/re-entry — expected, not a mistake.<br>
     <strong>Note</strong> — context for the week (injury, travel, how a run felt).<br>
+    <strong>Gym</strong> — Tue &amp; Thu, upper body only, chosen to steer around the right rotator cuff. Deliberately no leg work: Mon/Wed already carry the calf loading, and the legs belong to the runs.<br>
     <strong>Race day</strong> — start conservative. First 5k will feel easy; don't race it.
   </div>
 
   <div class="foot">
     <h2>BULLETPROOF THE <span>RIGHT FOOT</span></h2>
-    <div class="sub">Mid-portion Achilles · posterior tibialis · plantar fascia &middot; matched week-for-week to the run plan &middot; strength on Mon &amp; Wed (after easy runs), light holds on Fri (after the long run)</div>
+    <div class="sub">Mid-portion Achilles &middot; posterior tibialis &middot; plantar fascia &middot; the FOOT block on Mon/Wed/Fri above</div>
 
     <div class="tempo">
-      <b>How to read it.</b> <code>3×10</code> = 3 sets of 10 reps. <code>each</code> = one leg at a time (per foot). Tempo like <code>3-2-3</code> = seconds <b>up · hold at top · down</b> — moving that slowly <i>is</i> the exercise. Default tempos: <b>A</b> 3-2-3, <b>B</b> 3-1-3, <b>C</b> 2-1-3. <code>load</code> = backpack or dumbbells. <code>ISO</code> = isometric hold (see below). Rest 60–90s between sets. The whole point of this layout: heavy eccentric work only on your two <b>easy</b>-run days; <b>Friday</b> after the long run is light holds only — never stack heavy calf work on long-run legs.
-    </div>
-
-    <div class="proto">
-      <div class="wk-head">
-        <div>Wk</div><div>Date</div><div>Phase</div>
-        <div>Mon · after easy run</div><div>Wed · after easy run</div><div>Fri · after long run</div>
-      </div>
-
-      <div class="wk-row mark done">
-        <div class="wn">6</div><div class="wd">Jun 29</div><div class="wph">Calm</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>ISO</b> 4×30s</span><span class="i"><b>A</b> 3×10 both legs · <b>partial range</b> (heel to platform, not below yet)</span><span class="i"><b>B</b> 2×12 light</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×30s only</span></div>
-      </div>
-
-      <div class="wk-row done">
-        <div class="wn">7</div><div class="wd">Jul 6</div><div class="wph">Calm</div>
-        <div class="d dmon done"><span class="dlabel">MON</span><span class="i"><b>ISO</b> 5×30s</span><span class="i"><b>A</b> 3×12 both legs · <b>full range</b> (heel drops below platform)</span><span class="i"><b>B</b> 3×12 light–moderate</span></div>
-        <div class="d dwed done"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×30s only</span></div>
-      </div>
-
-      <div class="wk-row done">
-        <div class="wn">8</div><div class="wd">Jul 13</div><div class="wph rest">Calm · flare</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><i>Flare response — hold the progression, don't push through.</i></span><span class="i"><b>ISO</b> 5×40s only · both legs · pain ≤3/10</span><span class="i">no <b>A</b> · no <b>B</b> · <b>C</b> postponed to wk 9</span></div>
-        <div class="d dwed done"><span class="dlabel">WED</span><span class="i">If Tue &amp; Wed mornings were calm:</span><span class="i"><b>ISO</b> 5×40s</span><span class="i"><b>A</b> 3×10 both legs · slow · stop at any pang</span><span class="i"><b>B</b> 2×12 light</span><span class="i">Not calm → <b>ISO</b> only again</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
-      </div>
-
-      <div class="wk-row mark done">
-        <div class="wn">9</div><div class="wd">Jul 20</div><div class="wph rest">Travel · ISO</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><i>Travel week — only the Fri ISO actually got done.</i></span><span class="i"><b>ISO</b> 5×40s when you can</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
-      </div>
-
-      <div class="wk-row done">
-        <div class="wn">10</div><div class="wd">Jul 27</div><div class="wph">Rebuild</div>
-        <div class="d dmon done"><span class="dlabel">MON</span><span class="i"><i>Eased back in with ISO after travel.</i></span><span class="i"><b>ISO</b> 5×40s</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>ISO</b> 5×40s</span><span class="i"><b>A</b> 3×10 both legs · slow</span><span class="i"><b>B</b> 2×12 light</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
-      </div>
-
-      <div class="wk-row done">
-        <div class="wn">11</div><div class="wd">Aug 3</div><div class="wph">Rebuild</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>ISO</b> 5×40s</span><span class="i"><b>A</b> 3×12 both legs · full range</span><span class="i"><b>B</b> 3×12 moderate</span><span class="i"><b>C</b> 2×12 each <i>(new)</i></span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
-      </div>
-
-      <div class="wk-row done">
-        <div class="wn">12</div><div class="wd">Aug 10</div><div class="wph">Build</div>
-        <div class="d dmon done"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×8 each · single-leg <b>eccentric only</b> (push up on both, lift one foot, lower on one in 3s)</span><span class="i"><b>B</b> 3×12 each</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed done"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
-      </div>
-
-      <div class="wk-row mark done">
-        <div class="wn">13</div><div class="wd">Aug 17</div><div class="wph rest">Build · vacation</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><i>Travel — hold, don't progress. Just need a step.</i></span><span class="i"><b>A</b> 3×8 each single-leg eccentric only, bodyweight</span><span class="i"><b>C</b> towel version 3×15</span><span class="i">or <b>ISO</b> only if tight for space</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×30s only</span></div>
-      </div>
-
-      <div class="wk-row done">
-        <div class="wn">14</div><div class="wd">Aug 24</div><div class="wph">Build</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×10 each · single-leg <b>full</b> (up and down on one), bodyweight</span><span class="i"><b>B</b> 3×12 each</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
-      </div>
-
-      <div class="wk-row done">
-        <div class="wn">15</div><div class="wd">Aug 31</div><div class="wph">Build</div>
-        <div class="d dmon done"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×8 each · single-leg <b>+ ~5 kg</b> (first added load)</span><span class="i"><b>B</b> 3×10 each heavier</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed done"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
-      </div>
-
-      <div class="wk-row">
-        <div class="wn">16</div><div class="wd">Sep 7</div><div class="wph">Build</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 3×8 each · single-leg <b>+ ~6–8 kg</b></span><span class="i"><b>B</b> 3×10 each heavy</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
-      </div>
-
-      <div class="wk-row">
-        <div class="wn">17</div><div class="wd">Sep 14</div><div class="wph">Build</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each · single-leg <b>+ ~8–10 kg</b> (heavy — last 1–2 reps hard)</span><span class="i"><b>B</b> 3×10 each heavy</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i">Repeat Monday</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 5×40s only</span></div>
-      </div>
-
-      <div class="wk-row mark">
-        <div class="wn">18</div><div class="wd">Sep 21</div><div class="wph">Spring</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×15 double-leg (low, quiet, fast) <i>(new)</i></span><span class="i"><b>A</b> 2×10 each bodyweight</span><span class="i"><b>ISO</b> 2×30s</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
-      </div>
-
-      <div class="wk-row">
-        <div class="wn">19</div><div class="wd">Sep 28</div><div class="wph">Spring</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×20 double-leg</span><span class="i"><b>A</b> 2×10 each bodyweight</span><span class="i"><b>ISO</b> 2×30s</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
-      </div>
-
-      <div class="wk-row">
-        <div class="wn">20</div><div class="wd">Oct 5</div><div class="wph">Spring</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×20 double-leg + 2×8 each <b>single-leg</b> mini-hops <i>(new)</i></span><span class="i"><b>ISO</b> 2×30s</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
-      </div>
-
-      <div class="wk-row">
-        <div class="wn">21</div><div class="wd">Oct 12</div><div class="wph">Spring</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>B</b> 3×10 each</span><span class="i"><b>C</b> 3×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 3×12 each single-leg</span><span class="i"><b>ISO</b> 2×30s</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 4×40s only</span></div>
-      </div>
-
-      <div class="wk-row mark">
-        <div class="wn">22</div><div class="wd">Oct 19</div><div class="wph">Taper</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 2×6 each + load (drop to 2 sets, same weight)</span><span class="i"><b>B</b> 2×8 each</span><span class="i"><b>C</b> 2×15 each</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>D</b> pogos 2×15 double-leg (easy)</span><span class="i"><b>ISO</b> 2×30s</span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 3×30s only</span></div>
-      </div>
-
-      <div class="wk-row">
-        <div class="wn">23</div><div class="wd">Oct 26</div><div class="wph">Taper</div>
-        <div class="d dmon"><span class="dlabel">MON</span><span class="i"><b>A</b> 2×8 each bodyweight (no added load)</span><span class="i"><b>B</b> 2×8 light</span><span class="i"><b>ISO</b> 3×30s</span></div>
-        <div class="d dwed"><span class="dlabel">WED</span><span class="i"><b>A</b> 2×8 each bodyweight</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><i>no pogos this week</i></span></div>
-        <div class="d lite dfri"><span class="dlabel">FRI</span><span class="i"><b>ISO</b> 2×30s only</span></div>
-      </div>
-
-      <div class="wk-row mark">
-        <div class="wn">24</div><div class="wd">Nov 2</div><div class="wph rest">Race · Nov 7</div>
-        <div class="d dmon"><span class="dlabel">MON Nov 2</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><b>A</b> 2×10 each bodyweight (light, just priming)</span></div>
-        <div class="d dwed"><span class="dlabel">WED Nov 4</span><span class="i"><b>ISO</b> 2×30s only</span></div>
-        <div class="d lite dfri"><span class="dlabel">THU–FRI</span><span class="i">Rest the feet — nothing. <b>Race Sat Nov 7, 6:00 PM.</b></span></div>
-      </div>
+      <b>How to read it.</b> <code>3×10</code> = 3 sets of 10 reps. <code>each</code> = one leg at a time (per foot). Tempo like <code>3-2-3</code> = seconds <b>up · hold at top · down</b> — moving that slowly <i>is</i> the exercise. Default tempos: <b>A</b> 3-2-3, <b>C</b> 2-1-3. <b>E</b> is a hold like ISO, but with the knees bent. <code>load</code> = backpack or dumbbells. <code>ISO</code> = isometric hold (see below). Rest 60–90s between sets. The whole point of this layout: heavy eccentric work only on your two <b>easy</b>-run days; <b>Friday</b> after the long run is light holds only — never stack heavy calf work on long-run legs.
     </div>
 
     <div class="gloss">
@@ -352,10 +258,18 @@ h1 span{color:#f97316;font-weight:700}
         <p>On the ToePro with the balls of your feet on the ramp so your <b>toes sit higher than your heels</b> (this pre-tensions the plantar fascia). Hold a wall/rail for balance only. Rise straight up onto the ball of the foot (<b>3s up</b>), pause at the top (<b>2s</b>), then lower slowly (<b>3s down</b>) until the heel drops <b>below</b> the platform into a gentle stretch — full range is fine for your mid-portion Achilles. Cue: <b>rise straight up over the big toe, don't let the ankle roll outward</b> (this protects the posterior tibialis). Progress: both legs → single leg → add a loaded backpack/dumbbell.</p>
       </div>
 
+      <div class="ex" style="opacity:.62">
+        <span class="nm">B · Seated heel raise <span style="color:#8a8a8a;font-weight:400">(retired after wk 15)</span></span>
+        <span class="tgt">Soleus &mdash; replaced by E</span>
+        <p>Sit, balls of feet on the ToePro/step edge, weight resting on the knees, knees bent ~90&deg;. Push up (<b>2&ndash;3s</b>), pause (<b>1&ndash;2s</b>), lower slowly (<b>3s</b>) to a full stretch. Dropped from wk 16 because it meant breaking down the standing ToePro setup &mdash; <b>E</b> below does the same job standing. Kept here so the weeks in the Done band still read correctly.</p>
+      </div>
+
       <div class="ex">
-        <span class="nm">B · Seated heel raise</span>
-        <span class="tgt">Soleus — the downhill protector</span>
-        <p>What you already do. Sit, balls of feet on the ToePro/step edge, weight(s) resting on top of your knees, knees bent ~90°. Push up onto the balls of the feet (<b>2–3s</b>), pause (<b>1–2s</b>), lower slowly (<b>3s</b>) to a full stretch. The bent knee isolates the <b>soleus</b> — the biggest plantarflexor in running and the key Achilles protector on downhills. Progress by adding weight.</p>
+        <span class="nm">E · Bent-knee calf hold (standing)</span>
+        <span class="tgt">Soleus &mdash; the downhill protector</span>
+        <p>Your normal ToePro setup, nothing to move. Balls of the feet on the ramp, hand on a wall for balance, and <b>bend the knees to about 30&deg;</b> &mdash; a shallow quarter-squat &mdash; holding that knee bend the whole time. Rise to about <b>halfway up</b> and <b>hold dead still</b> for the count.</p>
+        <p style="margin-top:.5rem"><b>Why the bent knee is the whole point.</b> The gastrocnemius crosses the knee, so bending it goes slack and hands the work to the <b>soleus</b> underneath &mdash; the biggest plantarflexor in running, the one that fatigues over 21k and the one that protects the Achilles on downhills and in loose sand. Straight-knee work (<b>A</b>, and the standing <b>ISO</b>) does not reach it, which is why this earns its own slot.</p>
+        <p style="margin-top:.5rem">Both legs first, single leg once that is easy. Same pain rule as everything else. <b>Prefer reps?</b> Same position, 3&times;12 slow bent-knee heel raises does the same job &mdash; the knee angle is what matters, holds versus reps does not.</p>
       </div>
 
       <div class="ex">
@@ -386,6 +300,57 @@ h1 span{color:#f97316;font-weight:700}
     </div>
 
     <div class="disclaimer">General training info, not medical advice. These symptoms are recurring — if pain worsens or doesn't settle, get a hands-on assessment from a physio or sports-medicine clinician.</div>
+  </div>
+
+  <div class="foot">
+    <h2>GYM &mdash; <span>TUE &amp; THU</span></h2>
+    <div class="sub">Upper body only &middot; both days identical &middot; chosen to work around the right rotator cuff</div>
+
+    <div class="tempo">
+      <b>The rule these four follow.</b> An irritated cuff is provoked by particular <i>positions</i>, not by upper-body work as such: overhead, end-range, and arm-out-to-the-side. So: <b>no overhead pressing, no lateral raises, no upright rows, no dips, no wide-grip bench, nothing behind the neck</b>, and no deep stretch at the bottom of a press. Elbows stay in front of the body, grips neutral where possible. Rest 60&ndash;90s. Same pain rule as the Achilles &mdash; <b>&le;5/10 during, back to normal by the next morning</b>.
+    </div>
+
+    <div class="gloss gym">
+      <h3>The four lifts</h3>
+
+      <div class="ex">
+        <span class="nm">1 &middot; Dumbbell floor press</span>
+        <span class="tgt">Chest + triceps</span>
+        <p>Lie on the <b>floor</b>, not the bench, dumbbells in a <b>neutral grip</b> (palms facing each other), elbows tucked to about <b>45&deg;</b> from your ribs. Press up, then lower until the back of the upper arm touches the floor and stop. That floor contact is the whole point: it cuts off the deep bottom position where the shoulder is stretched under load, which is the part an angry cuff objects to. <b>3&times;8&ndash;10.</b></p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">2 &middot; Single-arm dumbbell row</span>
+        <span class="tgt">Lats, rhomboids, mid-traps</span>
+        <p>Three-point stance on the flat bench: same-side knee up on the bench and the <b>forearm</b> (not a straight arm) resting on it, the other foot on the floor, dumbbell hanging. Row by driving the <b>elbow back along your ribs</b> &mdash; not out wide &mdash; and squeeze the shoulder blade at the top. Posting on the forearm rather than a locked-out hand keeps the right shoulder from bearing weight through a straight arm while it is the support side. This is also the posture work that pays off late in a long race. <b>3&times;10 each.</b></p>
+        <p style="margin-top:.5rem;color:#8a8a8a"><b>Don't want to post on it at all?</b> Swap in a <b>barbell bent-over row</b>, 3&times;10 &mdash; no bench, no support arm, same tucked-elbow path. Costs you some lower-back freshness, so keep it moderate on a Thursday before Friday's long run.</p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">3 &middot; Barbell (or dumbbell) curl</span>
+        <span class="tgt">Biceps</span>
+        <p>Standing, upper arms pinned at your sides, curl and lower under control. Pure elbow flexion &mdash; the shoulder does essentially nothing, which is exactly why it is on this list. Keep the elbows from drifting forward at the top. <b>3&times;10&ndash;12.</b></p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">4 &middot; Band triceps pushdown</span>
+        <span class="tgt">Triceps</span>
+        <p>Loop a band over the <b>pull-up bar</b>. Stand under it, upper arms pinned to your sides, and extend the elbows down against the band. Again pure elbow work with the shoulder neutral and static &mdash; the overhead triceps extension that would normally pair with this is exactly the position to avoid for now. <b>3&times;12&ndash;15.</b></p>
+      </div>
+
+      <div class="ex">
+        <span class="nm">Optional 5th &middot; Kettlebell suitcase carry</span>
+        <span class="tgt">Traps, grip, core</span>
+        <p>One kettlebell, held at your side like a suitcase, walk. Stay tall, don't let the weighted side sag. The shoulder is held <b>still and neutral</b> the whole time, so it loads the traps, grip and trunk without asking the cuff to move anything. Add it if the four above feel light. <b>3&times;40&nbsp;m each side.</b></p>
+      </div>
+    </div>
+
+    <div class="painrule">
+      <strong>Parked while the cuff is angry:</strong> pull-ups, overhead press, lateral raises, dips, wide-grip bench. The pull-up bar still earns its keep as the band anchor.<br><br>
+      <strong>Two honest caveats.</strong> No upper-body lift is truly zero-cuff &mdash; the rotator cuff stabilizes the shoulder in everything you do with your arms; these avoid the <i>provocative</i> positions rather than switching the cuff off. And avoidance alone doesn't heal a cuff &mdash; progressive loaded rehab does. Treat this as the way to keep training around the shoulder, not as the treatment for it.
+    </div>
+
+    <div class="disclaimer">General training info, not medical advice. A rotator cuff that isn't settling deserves a hands-on assessment &mdash; the same advice as for the Achilles.</div>
   </div>
 </div>
 </body>
