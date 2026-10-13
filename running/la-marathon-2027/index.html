@@ -200,6 +200,25 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
 .card b{color:var(--ink);font-weight:500}
 .sources{margin-top:1.4rem;font-size:.64rem;color:var(--mut);line-height:1.6}
 
+/* contents */
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:1rem}
+.toc{margin:0 0 1.6rem;border:1px solid var(--bd2);border-radius:8px;padding:.85rem 1rem 1rem}
+.toc .tt{display:block;font-family:'Unbounded',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:.6rem}
+.toc ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.35rem .9rem;counter-reset:toc}
+.toc li{counter-increment:toc;font-size:.7rem;line-height:1.4}
+.toc a{display:block;text-decoration:none;color:var(--ink);padding:.3rem .5rem;border-left:2px solid var(--bd);border-radius:0 4px 4px 0}
+.toc a::before{content:counter(toc,decimal-leading-zero) "  ";color:var(--faint);white-space:pre}
+.toc a:hover{background:var(--surface);border-left-color:var(--accf)}
+.toc a .d{display:block;color:var(--mut);font-size:.6rem;padding-left:1.55rem}
+.toc a.sh{border-left-color:#c3b2d9;background:#f7f4fb}
+.toc a.sh .n{color:var(--sh);font-weight:500}
+.toc a.gy{border-left-color:#b8c4d8}
+.toc a.ft{border-left-color:#cbd5c0}
+.toc a.rn{border-left-color:var(--accf)}
+.totop{float:right;font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-decoration:none;margin-top:.5rem}
+.totop:hover{color:var(--acc)}
+
 @media (max-width:820px){
   body{padding:1.5rem 1rem 4rem}
   .head{display:none}
@@ -240,6 +259,20 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   <h1>MARATHON<br><span>Nov 9 → Mar 7</span></h1>
   <div class="sub">ASICS Los Angeles Marathon (42nd) &middot; Sun Mar 7 2027, 7:00 AM &middot; Dodger Stadium → Century City &middot; 17 weeks<br>Runs Mon/Wed/Fri with the right-foot protocol &middot; lifting Tue/Thu &middot; the shoulder every day.</div>
 
+  <nav class="toc" id="contents"><span class="tt">Contents</span><ol>
+    <li><a href="#now" class="rn"><span class="n">Joshua Tree first</span><span class="d">what starts now, before Nov 9</span></a></li>
+    <li><a href="#week" class="rn"><span class="n">Up next &middot; week 1</span><span class="d">the live week, day by day</span></a></li>
+    <li><a href="#ahead" class="rn"><span class="n">All weeks</span><span class="d">wk 2&ndash;17 to race day</span></a></li>
+    <li><a href="#pace" class="rn"><span class="n">Pace &amp; tests</span><span class="d">calculator &middot; the 6:30 cutoff</span></a></li>
+    <li><a href="#foot" class="ft"><span class="n">Right foot</span><span class="d">Achilles &middot; ladder &middot; pre-run ritual</span></a></li>
+    <li><a href="#gym" class="gy"><span class="n">Gym &middot; Tue &amp; Thu</span><span class="d">Legs A &middot; Legs B &middot; right-arm return</span></a></li>
+    <li><a href="#shoulder" class="sh"><span class="n">Shoulder &middot; daily routine</span><span class="d">6 moves, 2&times; a day</span></a></li>
+    <li><a href="#retest" class="sh"><span class="n">Shoulder &middot; re-test log</span><span class="d">every other Sunday &middot; doctor Oct 30</span></a></li>
+    <li><a href="#weight"><span class="n">Target weight</span><span class="d">80 kg &middot; what to eat by day</span></a></li>
+    <li><a href="#day"><span class="n">The day</span><span class="d">Huberman-style timeline</span></a></li>
+    <li><a href="#race"><span class="n">Race day</span><span class="d">Mar 7 timeline &middot; pacing &middot; fuel</span></a></li>
+  </ol></nav>
+
   <div class="keys">
     <div class="key"><span class="k">Cutoff</span><span class="v">6:30</span><span class="s">9:15/km average. Slower than 15:00/mile (9:19/km) and you move to the sidewalk as the streets reopen.</span></div>
     <div class="key"><span class="k">Goal</span><span class="v acc">sub-6:15</span><span class="s">MP ≈ 8:50/km. The tests in wk 6 and wk 11 set the real number.</span></div>
@@ -251,7 +284,7 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
 
   <div class="reality"><b>Why this block isn't all easy, like Joshua Tree.</b> Your August 10k (81:29, flat) projects to a marathon of about <b>6:28</b>: ninety seconds inside the cutoff. That is the honest starting line. So this block adds the things that buy minutes: strides on Mondays, marathon-pace segments on Wednesdays, two tests that set the goal, and 6.5 kg off. Four more months of consistent volume usually moves a newer runner a long way. The gap can be closed, but it is real, and the tests will show where you stand.</div>
 
-  <div class="band"><span class="lbl">Now → Nov 7</span><span class="rule"></span><span class="cnt">Joshua Tree first</span></div>
+  <div class="band" id="now"><span class="lbl">Now → Nov 7</span><span class="rule"></span><span class="cnt">Joshua Tree first</span></div>
   <div class="bridge">
     <p><b>Joshua Tree first.</b> Weeks 20–24 of the <a href="../joshua-tree-2026/index.html">half plan</a> run exactly as written. This plan starts the Monday after the race and builds from where that block peaks: wk 19 landed at 28.4k, and wks 20–21 plan 29k → 31k. That <b>31k</b> is the ceiling the first marathon weeks sit under.</p>
     <p><b>Start today:</b> the shoulder routine (twice a day, ~6 min), with the first re-test on <b>Sun Oct 11</b>. Take the re-test log to your doctor's follow-up on <b>Fri Oct 30</b>. Start the daily plan too: morning light, caffeine timing, a fixed wake time. And weigh in Mon/Wed/Fri to get a baseline.</p>
@@ -259,7 +292,7 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
     <p><b>Weight until the race:</b> a gentle deficit only (~250 kcal/day), and none on rehearsal days, the day before them, or race week.</p>
   </div>
 
-  <div class="band now"><span class="lbl">Up next</span><span class="rule"></span><span class="cnt">Nov 9 &ndash; Nov 13 &middot; week 1</span></div>
+  <div class="band now" id="week"><span class="lbl">Up next</span><span class="rule"></span><span class="cnt">Nov 9 &ndash; Nov 13 &middot; week 1</span></div>
     <div class="now">
       <div class="hd"><span class="t1">Week 1</span><span class="t2">Nov 9 &middot; Recover</span><span class="t3">13 km planned &middot; &minus;50% on race week</span></div>
       <div class="dayrow"><div class="dn">MON<span class="dd">Nov 9</span></div><div class="cells"><div class="blk run dim"><span class="tag">RUN</span>— walk 30–40 min</div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s both legs only</span></div></div></div>
@@ -270,7 +303,7 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
       <div class="note">Recovery from Joshua Tree (Sat Nov 7). A half sits in the legs for about ten days even when they feel fine: no strides, no pace, no big hills. If the Achilles is stiff on Tuesday or Wednesday morning, run/walk the Wed 5k. Lifting starts this week on purpose light — the first two sessions are for learning the moves, not loading them. <b>Sun Nov 8:</b> shoulder re-test and the weigh-in baseline for the block.</div>
     </div>
 
-  <div class="band"><span class="lbl">Ahead</span><span class="rule"></span><span class="cnt">weeks 2&ndash;17 &middot; race Sun Mar 7</span></div>
+  <div class="band" id="ahead"><span class="lbl">Ahead</span><span class="rule"></span><span class="cnt">weeks 2&ndash;17 &middot; race Sun Mar 7</span></div>
   <div class="grid">
       <div class="head"><div>Wk</div><div>Date</div><div>Phase</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div class="kmh">Km</div><div class="pch">&Delta;%</div></div>
       <div class="wk mark"><div class="wn">2</div><div class="wd">Nov 16</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 3×6 each + 15 lb · single-leg</span><span class="i"><b>E</b> 3×40s each · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Legs A</b> · 3×8 · RPE 7</span></div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 8k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>D</b> pogos 3×20 + 2×8 each single-leg mini-hops</span><span class="i"><b>A</b> 2×10 each bodyweight</span><span class="i"><b>ISO</b> 2×30s</span></div></div><div class="day d-thu"><div class="blk gym"><span class="tag">GYM</span><span class="i"><b>Legs B</b> · 3×8 · RPE 6</span></div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 15k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km ">29</div><div class="pc ok" title="vs Joshua Tree wk 21 (31k), the last full week before the taper">−6%</div><div class="note">Back to a normal week, a touch under the 31k Joshua Tree peak — that peak is the ceiling the 5% ramp builds from. Foot work picks up exactly where you are: 3×6 single-leg with 15 lb, bent-knee holds 3×40s, the band. <b>Gut training starts:</b> any run over 90 minutes gets 30 g of carbs per hour from minute 30.</div></div>
@@ -305,8 +338,8 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   </div>
 
   <!-- ─────────────── PACE ─────────────── -->
-  <div class="sec">
-    <h2>WHAT PACE <span>IS MINE?</span></h2>
+  <div class="sec" id="pace">
+    <a href="#contents" class="totop">↑ contents</a><h2>WHAT PACE <span>IS MINE?</span></h2>
     <div class="sub">Two tests set the goal: a 5k on Wed Dec 16 (wk 6) and a 10k on Wed Jan 20 (wk 11). The 10k counts more.</div>
 
     <div class="calc">
@@ -330,8 +363,8 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   </div>
 
   <!-- ─────────────── FOOT ─────────────── -->
-  <div class="sec">
-    <h2>BULLETPROOF THE <span>RIGHT FOOT</span></h2>
+  <div class="sec" id="foot">
+    <a href="#contents" class="totop">↑ contents</a><h2>BULLETPROOF THE <span>RIGHT FOOT</span></h2>
     <div class="sub">Mid-portion Achilles &middot; posterior tibialis &middot; plantar fascia &middot; continued from Joshua Tree &middot; the FOOT block on Mon/Wed/Fri</div>
 
     <div class="tempo">
@@ -399,8 +432,8 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   </div>
 
   <!-- ─────────────── GYM ─────────────── -->
-  <div class="sec gymsec">
-    <h2>TUE &amp; THU — <span>LEGS, NOT SHOULDER</span></h2>
+  <div class="sec gymsec" id="gym">
+    <a href="#contents" class="totop">↑ contents</a><h2>TUE &amp; THU — <span>LEGS, NOT SHOULDER</span></h2>
     <div class="sub">Bench &middot; pull-up bar &middot; barbell &middot; 2 dumbbells (+ kettlebell, bands) &middot; ~40 min Tue, ~30 min Thu &middot; starts Tue Nov 10</div>
 
     <div class="tempo">
@@ -514,8 +547,8 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   </div>
 
   <!-- ─────────────── SHOULDER ─────────────── -->
-  <div class="sec shsec">
-    <h2>THE RIGHT SHOULDER — <span>EVERY DAY</span></h2>
+  <div class="sec shsec" id="shoulder">
+    <a href="#contents" class="totop">↑ contents</a><h2>THE RIGHT SHOULDER — <span>EVERY DAY</span></h2>
     <div class="sub">Frozen shoulder (adhesive capsulitis) &middot; onset late Aug 2026 &middot; 2 × ~6 min a day &middot; starts today</div>
 
     <div class="tempo">
@@ -525,7 +558,7 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
     </div>
 
     <div class="gloss" style="border-top:0;padding-top:0;margin-top:0">
-      <h3>The routine — in this order</h3>
+      <h3 id="routine">The routine — in this order</h3>
       <div class="ex">
         <span class="nm">1 · Pendulum</span>
         <span class="tgt">Unloading · pain relief</span><span class="sets">1 min</span>
@@ -569,7 +602,7 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
     </div>
 
     <div class="gloss">
-      <h3>Re-test log <span class="h3s">every other Sunday evening</span></h3>
+      <h3 id="retest">Re-test log <span class="h3s">every other Sunday evening</span></h3>
       <p style="color:var(--mut);font-size:.7rem;margin-bottom:.4rem">Same setup as September. On your back, towel under the elbow, elbow bent 90° at your side, fully relaxed, with the left hand doing the work. Photograph from the feet. Always in the evening, because mornings are stiffest.</p>
       <div class="tblwrap"><table class="tbl">
         <tr><th>Date</th><th>Right ER</th><th>Left ER</th><th>Nights</th><th>Phase</th></tr>
@@ -595,8 +628,8 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   </div>
 
   <!-- ─────────────── BODY ─────────────── -->
-  <div class="sec">
-    <h2>TARGET WEIGHT — <span>80 KG</span></h2>
+  <div class="sec" id="weight">
+    <a href="#contents" class="totop">↑ contents</a><h2>TARGET WEIGHT — <span>80 KG</span></h2>
     <div class="sub">1.845 m &middot; 86.5 kg today (BMI 25.4) → 80 kg by Feb 21 (BMI 23.5) &middot; waist under 92 cm</div>
 
     <div class="tempo">
@@ -647,8 +680,8 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   </div>
 
   <!-- ─────────────── THE DAY ─────────────── -->
-  <div class="sec">
-    <h2>THE DAY — <span>HUBERMAN-STYLE</span></h2>
+  <div class="sec" id="day">
+    <a href="#contents" class="totop">↑ contents</a><h2>THE DAY — <span>HUBERMAN-STYLE</span></h2>
     <div class="sub">Light, sleep, caffeine, food timing, cold and heat, fitted around the training. Times assume a 6:00 wake and morning sessions. If your day runs on a different clock, shift the times and keep the gaps.</div>
 
     <div class="tl">
@@ -718,8 +751,8 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
   </div>
 
   <!-- ─────────────── RACE DAY ─────────────── -->
-  <div class="sec">
-    <h2>MARCH 7 — <span>RACE DAY</span></h2>
+  <div class="sec" id="race">
+    <a href="#contents" class="totop">↑ contents</a><h2>MARCH 7 — <span>RACE DAY</span></h2>
     <div class="sub">Dodger Stadium → Santa Monica Blvd at Avenue of the Stars &middot; 7:00 AM &middot; 6:30 limit from the last starter &middot; 19 aid stations</div>
 
     <div class="tl">
