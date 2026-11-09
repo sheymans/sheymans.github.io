@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Half Marathon Plan — Joshua Tree Nov 7</title>
+<title>Joshua Tree Half</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -134,8 +134,45 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
 .painrule strong{color:var(--acc);font-weight:500}
 .disclaimer{margin-top:1.1rem;font-size:.64rem;color:var(--faint);line-height:1.6;font-style:italic}
 
+/* ── RACE RESULT ── */
+.band.hl .lbl{color:var(--acc)}
+.band.hl .rule{background:var(--accf)}
+.hero{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.2rem;margin:.6rem 0 1.2rem}
+.hero .big{font-family:'Unbounded',sans-serif;font-size:clamp(2.6rem,11vw,4.4rem);font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--acc)}
+.hero .lab{font-size:.72rem;color:var(--mut);line-height:1.6}
+.hero .lab b{color:var(--ink);font-weight:500}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-bottom:1.6rem}
+.tile{border:1px solid var(--bd);border-radius:6px;background:var(--surface);padding:.75rem .9rem}
+.tile .k{display:block;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.3rem}
+.tile .v{display:block;font-family:'Unbounded',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.tile .s{display:block;font-size:.62rem;color:var(--mut);margin-top:.2rem}
+.chartbox{position:relative;border:1px solid var(--bd);border-radius:6px;padding:.9rem .9rem .6rem;margin-bottom:.6rem}
+.chartbox h3{font-family:'Unbounded',sans-serif;font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.15rem}
+.chartbox .cap{font-size:.62rem;color:var(--mut);margin-bottom:.6rem;line-height:1.7}
+.chartbox .key{display:inline-flex;align-items:center;gap:.35rem;margin-right:1rem;white-space:nowrap}
+.chartbox .sw{display:inline-block;width:14px;height:0;border-top:2px solid var(--acc)}
+.chartbox .sw.ref{border-top:1.5px dashed var(--up)}
+.chartbox .sw.avg{border-top:1.5px dashed var(--faint)}
+.chartbox .sw.bar{height:8px;border:0;background:#d9c2b0;border-radius:2px}
+#splits svg{display:block;width:100%;overflow:visible}
+#splits text{font-family:'IBM Plex Mono',monospace;fill:var(--mut)}
+.tip{position:absolute;left:0;top:0;pointer-events:none;background:var(--ink);color:#fff;font-size:.62rem;line-height:1.5;padding:.4rem .55rem;border-radius:4px;white-space:nowrap;opacity:0;transition:opacity .08s;z-index:2}
+.tip b{color:#fdba74;font-weight:500}
+details.tbl{font-size:.66rem;color:var(--mut);margin:.2rem 0 1.6rem}
+details.tbl summary{cursor:pointer;color:var(--mut)}
+details.tbl summary:hover{color:var(--acc)}
+details.tbl table{border-collapse:collapse;margin-top:.6rem;width:100%;max-width:520px}
+details.tbl th,details.tbl td{text-align:right;padding:.22rem .5rem;border-bottom:1px solid var(--bd)}
+details.tbl th{font-weight:500;color:var(--ink);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase}
+details.tbl tr.climb td{color:var(--acc)}
+.story{font-size:.74rem;color:var(--mut);line-height:1.75;margin-bottom:.4rem}
+.story p{margin-bottom:.8rem;padding-left:.9rem;border-left:2px solid var(--bd2)}
+.story b{color:var(--ink);font-weight:500}
+.story .acc{color:var(--acc);font-weight:500}
+
 @media (max-width:820px){
   body{padding:1.5rem .9rem 4rem}
+  .band .cnt{white-space:normal;text-align:right}
   .head{display:none}
   .wk{
     grid-template-columns:34px 1fr auto auto;
@@ -167,11 +204,47 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
 <body>
 <div class="wrap">
   <a href="../index.html" class="backlink">&larr; running</a>
-  <h1>HALF MARATHON<br><span>May 25 → Nov 7</span></h1>
-  <div class="sub">Joshua Tree, CA &middot; night race, 6:00 PM start &middot; 24 weeks &middot; goal: finish inside the 4:00 cutoff<br>One schedule: runs and the right-foot protocol &mdash; Mon, Wed, Fri.</div>
+  <h1>HALF MARATHON<br><span>Joshua Tree &middot; done</span></h1>
+  <div class="sub">Twentynine Palms, CA &middot; Sat Nov 7 2026 &middot; night race, 6:00 PM start &middot; goal: finish inside the 4:00 cutoff<br>The race first, then the 24-week build that got there &mdash; May 25 &rarr; Nov 7.</div>
 
-  <details class="donewrap">
-    <summary class="band"><span class="lbl">Done</span><span class="rule"></span><span class="cnt">weeks 1&ndash;23 &middot; 441.5 km logged &middot; click to expand</span></summary>
+  <div class="band hl"><span class="lbl">Race result</span><span class="rule"></span><span class="cnt">Sat Nov 7 &middot; 6:16 PM start</span></div>
+  <div class="hero">
+    <span class="big">3:21:29</span>
+    <span class="lab"><b>21.10 km</b> on desert dirt roads, by headlamp<br><b>38:31 inside</b> the 4:00 cutoff</span>
+  </div>
+  <div class="tiles">
+    <div class="tile"><span class="k">Avg pace</span><span class="v">9:33/km</span><span class="s">cutoff needed 11:22/km</span></div>
+    <div class="tile"><span class="k">Moving time</span><span class="v">3:14:48</span><span class="s">6:41 standing still</span></div>
+    <div class="tile"><span class="k">Climb</span><span class="v">&uarr;497 m</span><span class="s">most in any run in the log</span></div>
+    <div class="tile"><span class="k">Heart rate</span><span class="v">153 avg</span><span class="s">178 max</span></div>
+    <div class="tile"><span class="k">Conditions</span><span class="v">17&deg;C</span><span class="s">clear, light NW wind &middot; feels 15&deg;</span></div>
+  </div>
+
+  <div class="chartbox" id="splits">
+    <h3>Pace per kilometre</h3>
+    <div class="cap"><span class="key"><span class="sw"></span>pace (faster is higher)</span><span class="key"><span class="sw avg"></span>race average 9:33</span><span class="key"><span class="sw ref"></span>cutoff pace 11:22</span><span class="key"><span class="sw bar"></span>climb in that km</span></div>
+    <div class="plot"></div>
+    <div class="tip"></div>
+  </div>
+  <details class="tbl">
+    <summary>Splits as a table</summary>
+    <table>
+      <thead><tr><th>Km</th><th>Pace</th><th>Climb</th><th>Avg HR</th></tr></thead>
+      <tbody id="splitrows"></tbody>
+    </table>
+  </details>
+
+  <div class="story">
+    <p><b>Km 1&ndash;8, the opening.</b> 8:21&ndash;9:11/km with heart rate settling at 160&ndash;165: quicker than any long run in the build (the 18k rehearsal went 9:52). On paper that's a fast start, but it held.</p>
+    <p><b>Km 9&ndash;13, the climb.</b> About half of the race's climbing came in these five km. Km 10 (11:58) was the only km slower than cutoff pace, and km 12 took 11:06. Cadence and heart rate dropped on both: those were the walk breaks on the steep grades, the race plan from the rehearsals.</p>
+    <p><b>Km 14&ndash;20, the return.</b> Back down to 8:29&ndash;9:39/km, mostly downhill, with heart rate back at 154&ndash;163. Km 16 at 8:29 was the second-fastest split of the night, 16 km in.</p>
+    <p><b>The finish.</b> The last full km rose again and came in at 11:22. The first 10k took 1:32:04 and the remaining 11.1k took 1:49:25, a positive split driven by the terrain rather than fading. Strava logged <span class="acc">10 PRs</span> on the night, including 15k, 10 mile, 20k and the half itself.</p>
+    <p><b>What got it there.</b> 24 weeks and 467.7 km, through an Achilles flare in July (a deload week and a week fully off), two rest weeks and a frozen right shoulder. Easy running only, with no speed work. The right-foot protocol ran three days a week throughout, and the Achilles was pain-free on every long run from the 16k on. Three dusk rehearsals (16k, 18k, 14k) set up the race routine, and the vest-strap fix after the 16k ended the mid-back pain.</p>
+  </div>
+
+
+  <details class="donewrap" open>
+    <summary class="band"><span class="lbl">The training</span><span class="rule"></span><span class="cnt">24 weeks &middot; May 25 &rarr; Nov 7 &middot; 467.7 km &middot; click to collapse</span></summary>
   <div class="grid">
       <div class="head"><div>Wk</div><div>Date</div><div>Phase</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div class="kmh">Km</div><div class="pch">&Delta;%</div></div>
       <div class="wk past mark"><div class="wn">1</div><div class="wd">May 25</div><div class="wp ">Base</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.08k<span class="t">50:33 ↑140m</span></span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.06k<span class="t">50:52 ↑83m</span></span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 6k</span><span class="skip">✕ skipped<span class="t">knee</span></span></div></div><div class="km act">10.1</div><div class="pc na">—</div><div class="note">Left knee — hurt it Friday morning putting on running shoes.</div></div>
@@ -197,34 +270,25 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
       <div class="wk past mark"><div class="wn">21</div><div class="wd">Oct 12</div><div class="wp ">Peak</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k</span><span class="done">✓ 6.14k<span class="t">1:02:38 ↑128m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 4×6 each + load</span><span class="i"><b>E</b> 3×40s each · knees ~30°</span><span class="i"><b>C</b> 3×15 each</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 7k</span><span class="done">✓ 7.14k<span class="t">1:13:43 ↑187m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>D</b> pogos 3×12 each single-leg</span><span class="i"><b>ISO</b> 2×30s</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run q"><span class="tag">RUN</span><span class="plan"><b>Sat Oct 17</b> · Rehearsal 18k</span><span class="done">✓ 18.20k<span class="t">2:59:28 ↑375m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 4×40s only</span></div></div><div class="km act">31.5</div><div class="pc ok">+8%</div><div class="note">Race rehearsal #2, Saturday evening in the race slot — 18.20k in 2:59:28 (<b>9:52/km</b>) on ↑375m: the new <b>longest run of the plan</b>, the biggest climb in the log, and quicker than the 16k (10:16/km) despite 2k more. <b>Back:</b> no mid-back pain — upper vest strap only and a more upright posture, which backs the lower strap as the wk-20 culprit. <b>Achilles:</b> good. It leaves 2.9k to race distance; at that pace the half comes in around <b>3:28</b>, ~32 min inside the 4:00 cutoff. Mon 10:12/km, Wed 10:19/km. Week landed at 31.5k, <b>+8%</b> on wk 20 — the peak of the block.</div></div>
       <div class="wk past mark"><div class="wn">22</div><div class="wd">Oct 19</div><div class="wp ">Taper</div><div class="day d-mon"><div class="blk run dim"><span class="tag">RUN</span>— Toronto</div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 2×6 each + load</span><span class="i"><b>E</b> 2×30s each · knees ~30°</span><span class="i"><b>C</b> 2×15 each</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run dim"><span class="tag">RUN</span>— Toronto</div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><b>A</b> 2×10 each bodyweight</span></div></div><div class="day d-thu"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 6k · evening</span><span class="done">✓ 6.04k<span class="t">1:09:13 ↑80m</span></span></div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan"><b>Sat Oct 24</b> · Long 14k</span><span class="done">✓ 14.17k<span class="t">2:09:24 ↑368m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 3×30s only</span></div></div><div class="km act">20.2</div><div class="pc ok">−36%</div><div class="note">Toronto Mon–Wed, no runs. Thu evening 6k after the flight at an easy 11:27/km. Saturday’s 14k went at <b>9:08/km</b> on ↑368m — a 9 AM start in the cool, and ~30 s/km quicker than any of the 14–18k long runs (4 Strava PRs). <b>Achilles:</b> fine. Quicker than easy, though: Strava’s relative effort was high, so wk 23 stays truly easy. Week landed at 20.2k, <b>−36%</b> on wk 21.</div></div>
       <div class="wk past"><div class="wn">23</div><div class="wd">Oct 26</div><div class="wp ">Taper</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.13k<span class="t">51:05 ↑103m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 2×8 each bodyweight</span><span class="i"><b>E</b> 2×30s both legs</span><span class="i"><b>ISO</b> 3×30s</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 5k</span><span class="done">✓ 5.12k<span class="t">51:12 ↑91m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>A</b> 2×8 each bodyweight</span><span class="i"><b>ISO</b> 3×30s</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run"><span class="tag">RUN</span><span class="plan">Long 9k</span><span class="done">✓ 9.21k<span class="t">1:30:07 ↑244m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 2×30s only</span></div></div><div class="km act">19.5</div><div class="pc ok">−3%</div><div class="note">A disciplined taper week: Mon 9:58/km and Wed 10:00/km, both at dawn, right on easy pace after the quick wk-22 14k. Friday’s 9.21k went at 9:47/km on ↑244m, a 5:50 PM start at 23°C — the last long run before the race. <b>Achilles:</b> good. Week landed at 19.5k, <b>−3%</b> on wk 22.</div></div>
+      <div class="wk past mark"><div class="wn">24</div><div class="wd">Nov 2</div><div class="wp race">Race</div><div class="day d-mon"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 3k</span><span class="done">✓ 3.05k<span class="t">27:31 ↑33m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><b>A</b> 2×10 each bodyweight</span></div></div><div class="day d-tue"><div class="nogym">·</div></div><div class="day d-wed"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 2k shakeout</span><span class="done">✓ 2.08k<span class="t">18:13 ↑15m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 2×30s only</span></div></div><div class="day d-thu"><div class="nogym">·</div></div><div class="day d-fri"><div class="blk run q"><span class="tag">RUN</span><span class="plan"><b>Sat Nov 7</b> · Race 21.1k</span><span class="done">✓ 21.10k<span class="t">3:21:29 ↑497m</span></span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i">Rest the feet — nothing.</span></div></div><div class="km act">26.2</div><div class="pc up">+34%</div><div class="note">Race week. Two dawn shakeouts (Mon 9:01/km, Wed 8:46/km), then <b>the race: 3:21:29</b>, 38:31 inside the cutoff (details at the top). The +34% is the race itself; only 5.1k of the week was training.</div></div>
   </div>
   </details>
 
-  <div class="band now"><span class="lbl">This week</span><span class="rule"></span><span class="cnt">Nov 2 &ndash; Nov 7 &middot; race week</span></div>
-    <div class="now">
-      <div class="hd"><span class="t1">Week 24</span><span class="t2">Nov 2 &middot; Race</span><span class="t3">26 km planned &middot; +33%</span></div>
-      <div class="dayrow"><div class="dn">MON<span class="dd">Nov 2</span></div><div class="cells"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 3k</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 3×30s</span><span class="i"><b>A</b> 2×10 each bodyweight (light, just priming)</span></div></div></div>
-      <div class="dayrow"><div class="dn">WED<span class="dd">Nov 4</span></div><div class="cells"><div class="blk run"><span class="tag">RUN</span><span class="plan">Easy 2k shakeout</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i"><b>ISO</b> 2×30s only</span></div></div></div>
-      <div class="dayrow"><div class="dn">SAT<span class="dd">Nov 7</span></div><div class="cells"><div class="blk run q"><span class="tag">RUN</span><span class="plan">Race 21.1k · 6:00 PM</span></div><div class="blk foot"><span class="tag">FOOT</span><span class="i">Rest the feet — nothing.</span></div></div></div>
-      <div class="note">26k is <b>+33%</b> on the 19.5k actual — but 21.1k of it is the race itself; the training load is just 5k. <b>Race week:</b> nothing new — same pre-run meal timing, same gear, upper vest strap only, upright on the descents, walk the steep downhills. Cutoff needs 11:22/km; the 18k rehearsal ran 9:52/km, so <b>start slower than feels necessary</b> — sand and dark cost time. Fri: lay out kit, sleep is the priority.</div>
-    </div>
-
   <div class="legend">
-    <strong>Reading it</strong> — three bands: <strong>Done</strong> (greyed, the full record — every logged run and the foot work behind it), <strong>This week</strong> (the orange card, day by day), and <strong>Ahead</strong> (still to come). Each week runs Mon–Fri, with <span class="qq">RUN</span> and <span style="color:#2f5d8c">FOOT</span> work on Mon, Wed and Fri; Tue and Thu are off days.<br>
-    <strong>Goal</strong> — finish inside the 4:00 cutoff (needs 11:22/km; easy pace ~10:00/km leaves ~35 min buffer). Night race on desert dirt roads with loose-sand sections — so rehearsals, not intervals.<br>
+    <strong>Reading the log</strong> — one row per week, every logged run and the foot work behind it. Each week runs Mon–Fri, with <span class="qq">RUN</span> and <span style="color:#2f5d8c">FOOT</span> work on Mon, Wed and Fri; Tue and Thu are off days. A run moved to the weekend shows its day in bold.<br>
+    <strong>Goal</strong> — finish inside the 4:00 cutoff (needed 11:22/km). Night race on desert dirt roads with loose-sand sections — so rehearsals, not intervals. <span class="qq">Finished in 3:21:29.</span><br>
     <strong>Easy</strong> — Zone 1–2, fully conversational. If you can't hold a sentence, slow down. Every run in this plan is easy — there is no speed work.<br>
     <span class="qq">Rehearsal</span> — race-simulation long run: start at dusk, finish by headlamp, sandy sections in, practice fueling and run/walk (run the firm stretches, walk deep sand and steep grades).<br>
     <strong>Long</strong> — same easy pace as the easy runs. Resist pushing it.<br>
     <strong>Rest weeks (Jul 20, Aug 17)</strong> — natural rest by circumstance. Don't squeeze runs in.<br>
-    <strong>Km</strong> — planned weekly volume; once a week is complete it turns <span style="color:#f97316">orange</span> and shows the actual distance run.<br>
-    <strong>&Delta;%</strong> — week-over-week change in volume: actual-vs-actual for completed weeks, planned-vs-planned ahead. <span style="color:#5cb85c">Green</span> ≤10%, <span style="color:#e5604d">red</span> &gt;10%. The red weeks (the early-August re-entry ramp, Aug 24, race week) are planned step-ups after rest/re-entry — expected, not a mistake.<br>
-    <strong>Note</strong> — context for the week (injury, travel, how a run felt).<br>
-    <strong>Race day</strong> — start conservative. First 5k will feel easy; don't race it.
+    <strong>Km</strong> — actual distance run that week.<br>
+    <strong>&Delta;%</strong> — week-over-week change in volume: actual vs the previous week’s actual. <span style="color:#5cb85c">Green</span> ≤10%, <span style="color:#e5604d">red</span> &gt;10%. The red weeks (the early-August re-entry ramp, Aug 24, race week) are planned step-ups after rest/re-entry — expected, not a mistake.<br>
+    <strong>Note</strong> — context for the week (injury, travel, how a run felt).
   </div>
 
   <div class="foot">
     <h2>BULLETPROOF THE <span>RIGHT FOOT</span></h2>
-    <div class="sub">Mid-portion Achilles &middot; posterior tibialis &middot; plantar fascia &middot; the FOOT block on Mon/Wed/Fri above</div>
+    <div class="sub">Mid-portion Achilles &middot; posterior tibialis &middot; plantar fascia &middot; the FOOT block on Mon/Wed/Fri in the log above</div>
 
     <div class="tempo">
       <b>How to read it.</b> <code>3×10</code> = 3 sets of 10 reps. <code>each</code> = one leg at a time (per foot). Tempo like <code>3-2-3</code> = seconds <b>up · hold at top · down</b> — moving that slowly <i>is</i> the exercise. Default tempos: <b>A</b> 3-2-3, <b>C</b> 2-1-3. <b>E</b> is a hold like ISO, but with the knees bent. <code>load</code> = backpack or dumbbells. <code>ISO</code> = isometric hold (see below). Rest 60–90s between sets. The whole point of this layout: heavy eccentric work only on your two <b>easy</b>-run days; <b>Friday</b> after the long run is light holds only — never stack heavy calf work on long-run legs.
@@ -248,7 +312,7 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
       <div class="ex" style="opacity:.62">
         <span class="nm">B · Seated heel raise <span style="color:#8a8a8a;font-weight:400">(retired after wk 15)</span></span>
         <span class="tgt">Soleus &mdash; replaced by E</span>
-        <p>Sit, balls of feet on the ToePro/step edge, weight resting on the knees, knees bent ~90&deg;. Push up (<b>2&ndash;3s</b>), pause (<b>1&ndash;2s</b>), lower slowly (<b>3s</b>) to a full stretch. Dropped from wk 16 because it meant breaking down the standing ToePro setup &mdash; <b>E</b> below does the same job standing. Kept here so the weeks in the Done band still read correctly.</p>
+        <p>Sit, balls of feet on the ToePro/step edge, weight resting on the knees, knees bent ~90&deg;. Push up (<b>2&ndash;3s</b>), pause (<b>1&ndash;2s</b>), lower slowly (<b>3s</b>) to a full stretch. Dropped from wk 16 because it meant breaking down the standing ToePro setup &mdash; <b>E</b> below does the same job standing. Kept here so the early weeks in the log still read correctly.</p>
       </div>
 
       <div class="ex">
@@ -289,5 +353,60 @@ details.donewrap[open]>summary.band{margin-bottom:.5rem}
     <div class="disclaimer">General training info, not medical advice. These symptoms are recurring — if pain worsens or doesn't settle, get a hands-on assessment from a physio or sports-medicine clinician.</div>
   </div>
 </div>
+<script>
+(function(){
+  // per-km laps from Strava: pace s/km, climb m, avg HR. The final 0.10 km is in the table only.
+  var D=[[523,0,143],[523,3.6,164],[530,17.6,164],[535,18.8,160],[535,25.4,162],[551,33.8,164],[551,37.2,165],[501,22.4,162],[557,55,161],[718,82.2,147],[610,41,138],[666,85.6,102],[630,37,121],[576,25.8,154],[579,9.2,162],[509,22.6,157],[537,12.8,160],[576,19.8,162],[563,14.2,163],[552,16.2,162],[682,28,157]];
+  var AVG=573, CUT=682, LO=480, HI=750, CMAX=90;
+  function mmss(t){t=Math.round(t);return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')}
+  var rows=document.getElementById('splitrows');
+  D.forEach(function(d,i){var tr=document.createElement('tr');if(i>=8&&i<=12)tr.className='climb';
+    tr.innerHTML='<td>'+(i+1)+'</td><td>'+mmss(d[0])+'</td><td>↑'+Math.round(d[1])+' m</td><td>'+Math.round(d[2])+'</td>';rows.appendChild(tr)});
+  var last=document.createElement('tr');last.innerHTML='<td>+0.10</td><td>1:22</td><td>↑6 m</td><td>130</td>';rows.appendChild(last);
+  var box=document.getElementById('splits'),plot=box.querySelector('.plot'),tip=box.querySelector('.tip');
+  var NS='http://www.w3.org/2000/svg', svg;
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+  function draw(){
+    var W=plot.clientWidth; if(!W) return;
+    var narrow=W<520, L=narrow?34:42, R=8, T=10, PH=narrow?170:200, GAP=14, CH=narrow?48:60, B=18;
+    var H=T+PH+GAP+CH+B, pw=W-L-R, cw=pw/D.length, fs=narrow?9:10, rd=narrow?3.5:4;
+    plot.innerHTML=''; svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.setAttribute('height',H); svg.setAttribute('role','img');
+    svg.setAttribute('aria-label','Pace per km: 8:21 to 9:39 per km except on the climbs at km 10, 12 and 21; race average 9:33, cutoff pace 11:22.');
+    plot.appendChild(svg);
+    var y=function(t){return T+(t-LO)/(HI-LO)*PH}, cx=function(i){return L+cw*(i+.5)};
+    [480,540,600,660,720].forEach(function(t){el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:'#ededed','stroke-width':1});
+      el('text',{x:L-6,y:y(t)+3,'text-anchor':'end','font-size':fs}).textContent=mmss(t)});
+    el('line',{x1:L,x2:W-R,y1:y(AVG),y2:y(AVG),stroke:'#a3a3a3','stroke-width':1.5,'stroke-dasharray':'4 4'});
+    el('line',{x1:L,x2:W-R,y1:y(CUT),y2:y(CUT),stroke:'#b91c1c','stroke-width':1.5,'stroke-dasharray':'4 4'});
+    // climb bars, own baseline under the pace plot
+    var cb=T+PH+GAP+CH, bw=Math.max(3,cw-2);
+    el('line',{x1:L,x2:W-R,y1:cb,y2:cb,stroke:'#d4d4d4','stroke-width':1});
+    el('text',{x:L-6,y:T+PH+GAP+10,'text-anchor':'end','font-size':fs-1}).textContent='↑m';
+    D.forEach(function(d,i){var h=Math.max(1,d[1]/CMAX*CH),x=cx(i)-bw/2,r=Math.min(4,bw/2,h);
+      el('path',{d:'M'+x+','+cb+'V'+(cb-h+r)+'q0,-'+r+' '+r+',-'+r+'H'+(x+bw-r)+'q'+r+',0 '+r+','+r+'V'+cb+'Z',fill:'#d9c2b0'})});
+    // pace line + dots
+    el('path',{d:D.map(function(d,i){return(i?'L':'M')+cx(i)+','+y(d[0])}).join(''),fill:'none',stroke:'#c2410c','stroke-width':2,'stroke-linejoin':'round'});
+    var dots=D.map(function(d,i){return el('circle',{cx:cx(i),cy:y(d[0]),r:rd,fill:'#c2410c',stroke:'#fff','stroke-width':2})});
+    // direct labels on the fastest and slowest km only
+    [7,9].forEach(function(i){var t=el('text',{x:cx(i),y:y(D[i][0])+(D[i][0]>600?17:-10),'text-anchor':'middle','font-size':fs});t.textContent=mmss(D[i][0]);t.style.fill='#1a1a1a'});
+    D.forEach(function(d,i){if(narrow&&i%2) return; el('text',{x:cx(i),y:H-4,'text-anchor':'middle','font-size':fs}).textContent=i+1});
+    // hover: one column per km, wider than the dot
+    var guide=el('line',{y1:T,y2:cb,stroke:'#1a1a1a','stroke-width':1,opacity:0});
+    D.forEach(function(d,i){var hit=el('rect',{x:L+cw*i,y:0,width:cw,height:H,fill:'transparent'});
+      function on(){guide.setAttribute('x1',cx(i));guide.setAttribute('x2',cx(i));guide.setAttribute('opacity',.15);
+        dots.forEach(function(c,j){c.setAttribute('r',j===i?6:rd)});
+        tip.innerHTML='<b>km '+(i+1)+'</b> &middot; '+mmss(d[0])+'/km<br>↑'+Math.round(d[1])+' m &middot; HR '+Math.round(d[2]);
+        tip.style.opacity=1;
+        var bx=box.getBoundingClientRect(),sx=svg.getBoundingClientRect(),px=sx.left-bx.left+cx(i),tw=tip.offsetWidth;
+        tip.style.left=Math.min(Math.max(4,px-tw/2),bx.width-tw-4)+'px';
+        tip.style.top=(sx.top-bx.top+y(d[0])-tip.offsetHeight-12)+'px'}
+      function off(){guide.setAttribute('opacity',0);tip.style.opacity=0;dots[i].setAttribute('r',rd)}
+      hit.addEventListener('mouseenter',on);hit.addEventListener('mouseleave',off);
+      hit.addEventListener('touchstart',on,{passive:true})});
+  }
+  draw(); var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(draw,100)});
+})();
+</script>
 </body>
 </html>
