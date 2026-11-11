@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CHIPS 3p embed</title>
+  <style>
+    body { font: 14px system-ui, sans-serif; margin: 12px; }
+    pre { white-space: pre-wrap; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <p>Step: <strong id="step"></strong></p>
+  <p>URL: <code id="href"></code></p>
+  <p>document.cookie:</p>
+  <pre id="cookies"></pre>
+  <script>
+    const BOUNCE_URL = 'https://chips-3p-bounce.quick.shopify.io/bounce.html';
+    const CHIPS = 'chips_partitioned';
+    const CONTROL = 'control_unpartitioned';
+    const params = new URLSearchParams(location.search);
+
+    function readCookies() {
+      return Object.fromEntries(
+        document.cookie.split('; ').filter(Boolean).map((pair) => {
+          const separator = pair.indexOf('=');
+          return [pair.slice(0, separator), pair.slice(separator + 1)];
+        })
+      );
+    }
+
+    async function partitionedFlags() {
+      if (!window.cookieStore) return {};
+      const cookies = await cookieStore.getAll().catch(() => []);
+      return Object.fromEntries(cookies.map((cookie) => [cookie.name, cookie.partitioned ?? null]));
+    }
+
+    function report(step, partitioned = {}) {
+      document.getElementById('step').textContent = step;
+      document.getElementById('href').textContent = location.href;
+      document.getElementById('cookies').textContent = document.cookie || '(empty)';
+      parent.postMessage(
+        { type: 'report', step, run: params.get('run'), href: location.href, cookies: readCookies(), partitioned },
+        '*'
+      );
+    }
+
+    function writeCookies(value) {
+      document.cookie = `${CHIPS}=${value}; Path=/; Secure; SameSite=None; Partitioned`;
+      document.cookie = `${CONTROL}=${value}; Path=/; Secure; SameSite=None`;
+    }
+
+    function clearCookies() {
+      const expired = 'Path=/; Secure; SameSite=None; Max-Age=0';
+      document.cookie = `${CHIPS}=; ${expired}; Partitioned`;
+      document.cookie = `${CONTROL}=; ${expired}`;
+    }
+
+    function returnUrl() {
+      const url = new URL(location.pathname, location.origin);
+      url.searchParams.set('step', 'returned');
+      url.searchParams.set('run', params.get('run'));
+      return url.href;
+    }
+
+    async function main() {
+      const step = params.get('step');
+      if (step === 'returned') return report('returned');
+      if (step === 'clear') {
+        clearCookies();
+        return report('cleared');
+      }
+      if (!params.has('run')) return report('idle');
+      writeCookies(params.get('run'));
+      report('written', await partitionedFlags());
+      location.href = `${BOUNCE_URL}?next=${encodeURIComponent(returnUrl())}`;
+    }
+
+    main();
+  </script>
+</body>
+</html>
